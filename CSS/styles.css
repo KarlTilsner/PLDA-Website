@@ -1,5 +1,6 @@
 :root {
     --hover: 50%;
+    --font-colour: #272826;
 }
 
 body {
@@ -8,15 +9,25 @@ body {
     font-family: 'Open Sans', sans-serif;
 }
 
+
+
+
+
+
+
+
+
+
+/* header styles ----------------------------------------------------------------------------------------------------------- */
 header {
-    width: 100%;
-    height: 10rem;
+    padding: 1rem 0;
     display: flex;
     justify-content: center;
     align-items: center;
     background-color: aquamarine;
     font-size: 1rem;
     font-weight: 700;
+    color: var(--font-colour);
 }
 
 .header_container {
@@ -41,15 +52,110 @@ header {
 .nav_container {
     display: flex;
     flex-direction: row;
-    gap: 1rem;
-
     margin-left: auto;
 }
 
 .nav_element {
     padding: 1rem;
 }
+
+.nav_element a {
+    text-decoration: none;
+    color: var(--font-colour);
+}
+
 .nav_element:hover {
     cursor: pointer;
     opacity: var(--hover);
 }
+/* header styles ----------------------------------------------------------------------------------------------------------- */
+
+
+
+
+
+
+
+
+
+
+/* Main body styles ----------------------------------------------------------------------------------------------------------- */
+main {
+    height: 100vh;
+    background-color: palevioletred;
+}
+/* Main body styles ----------------------------------------------------------------------------------------------------------- */
+
+
+
+
+
+
+
+
+
+/* Additional body styles ----------------------------------------------------------------------------------------------------------- */
+.screen_wide_content {
+    padding: 1rem;
+}
+/* Additional body styles ----------------------------------------------------------------------------------------------------------- */
+
+
+
+
+
+
+
+
+
+
+/* Footer styles ----------------------------------------------------------------------------------------------------------- */
+footer {
+    padding: 1rem 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: aquamarine;
+    font-size: 1rem;
+    color: var(--font-colour);
+}
+
+.footer_container {
+    width: 75%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.footer_logo_container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+
+.footer_logo {
+    width: 2rem;
+    height: 2rem;
+}
+
+.footer_row_container {
+    display: flex;
+    flex-direction: row;
+}
+
+.footer_element {
+    padding: 1rem;
+}
+
+.footer_element a {
+    text-decoration: none;
+    color: var(--font-colour);
+}
+
+.footer_element:hover {
+    cursor: pointer;
+    opacity: var(--hover);
+}
+/* Footer styles ----------------------------------------------------------------------------------------------------------- */
