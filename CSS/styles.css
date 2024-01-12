@@ -87,67 +87,6 @@ header {
 
 
 
-/* Main body styles ----------------------------------------------------------------------------------------------------------- */
-main {
-    height: 100vh;
-}
-
-.hero_container {
-    position: relative;
-    width: 100%;
-    height: 100%;
-}
-
-.hero_image {
-    object-fit: cover;
-    width: 100%;
-    height: 100%;
-}
-
-.hero_title_container {
-    position: absolute;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-
-    background-color:rgba(200, 200, 200, 0.4);
-    backdrop-filter: saturate(180%) blur(0.5rem);
-}
-
-.hero_title {
-    font-size: 10rem;
-    font-family: 700;
-}
-/* Main body styles ----------------------------------------------------------------------------------------------------------- */
-
-
-
-
-
-
-
-
-
-/* Additional body styles ----------------------------------------------------------------------------------------------------------- */
-.screen_wide_content {
-    padding: 1rem;
-}
-/* Additional body styles ----------------------------------------------------------------------------------------------------------- */
-
-
-
-
-
-
-
-
-
-
 /* Footer styles ----------------------------------------------------------------------------------------------------------- */
 footer {
     padding: 1rem 0;
@@ -199,3 +138,140 @@ footer {
     opacity: var(--hover);
 }
 /* Footer styles ----------------------------------------------------------------------------------------------------------- */
+
+
+
+
+
+
+
+
+
+
+/* Main body styles ----------------------------------------------------------------------------------------------------------- */
+main {
+    min-height: 100vh;
+}
+
+.hero_container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.hero_image {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+}
+
+.hero_title_container {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    background-color:rgba(200, 200, 200, 0.4);
+    backdrop-filter: saturate(180%) blur(0.5rem);
+}
+
+.hero_title {
+    font-size: 10rem;
+    font-family: 700;
+}
+/* Main body styles ----------------------------------------------------------------------------------------------------------- */
+
+
+
+
+
+
+
+
+
+
+/* Additional body styles ----------------------------------------------------------------------------------------------------------- */
+.screen_wide_content {
+    padding: 1rem;
+}
+/* Additional body styles ----------------------------------------------------------------------------------------------------------- */
+
+
+
+
+
+
+
+
+
+
+/* Scorecard styles ----------------------------------------------------------------------------------------------------------- */
+.scorecard {
+    margin: 2rem 0;
+    width: 100%;
+    display: flex;
+    gap: 2rem;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.match_info_container {
+    margin: 0 2rem;
+    padding: 1rem;
+
+    background-color: var(--theme-colour-main);
+}
+
+.round_number_container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    border-bottom: solid 1px var(--font-colour-dark);
+}
+
+.round_number {
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+.match_scorecard {
+    width: 100%;
+    display: flex;  
+}
+
+.team_score_container {
+    width: 100%;
+    padding: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.team_score {
+    font-size: 2rem;
+}
+
+.top_player_info_container {
+    width: 100%;
+    display: flex;
+}
+
+.top_player_info {
+    width: 100%;
+    padding: 1rem;
+}
+
+.title {
+    font-weight: 700;
+}
+
+.player {
+    margin-top: 1rem;
+}
+
+/* Scorecard styles ----------------------------------------------------------------------------------------------------------- */
