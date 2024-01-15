@@ -6,7 +6,7 @@
     --font-colour-light: #E8EBF7;
 
     --theme-colour-main: #D9D9D9;
-    --theme-colour-dark: #465362;
+    --theme-colour-light: #FFFFFF;
     
 }
 
@@ -14,6 +14,7 @@ body {
     all: unset;
     user-select: none;
     font-family: 'Open Sans', sans-serif;
+    background-color: var(--theme-colour-main);
 }
 
 
@@ -31,7 +32,7 @@ header {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: var(--theme-colour-main);
+    background-color: var(--theme-colour-light);
     font-size: 1rem;
     font-weight: 700;
     color: var(--font-colour-dark);
@@ -93,7 +94,7 @@ footer {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: var(--theme-colour-main);
+    background-color: var(--theme-colour-light);
     font-size: 1rem;
     color: var(--font-colour-dark);
 }
@@ -151,6 +152,9 @@ footer {
 /* Main body styles ----------------------------------------------------------------------------------------------------------- */
 main {
     min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .hero_container {
@@ -214,7 +218,7 @@ main {
 /* Scorecard styles ----------------------------------------------------------------------------------------------------------- */
 .scorecard {
     margin: 2rem 0;
-    width: 100%;
+    width: 80%;
     display: flex;
     gap: 2rem;
     flex-direction: column;
@@ -222,10 +226,18 @@ main {
 }
 
 .match_info_container {
-    margin: 0 2rem;
     padding: 1rem;
 
-    background-color: var(--theme-colour-main);
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+
+    background-color: var(--theme-colour-light);
+    border-radius: 0.5rem;
+}
+
+.match_data {
+    display: flex;
 }
 
 .round_number_container {
@@ -240,39 +252,52 @@ main {
     font-weight: 700;
 }
 
-.match_scorecard {
-    width: 100%;
-    display: flex;  
-}
-
-.team_score_container {
-    width: 100%;
+.team_scores_container {
+    width: 60%;
     padding: 1rem;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.top_players_container {
+    width: 40%;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    border-left: solid 1px var(--font-colour-dark);
+}
+
+.team_score_grid {
+    display: grid;
+    grid-template-rows: 1fr;
+    grid-template-columns: 3fr 1fr 1fr 1fr 1fr;
+    gap: 1rem;
+}
+
+.top_players_grid {
+    display: grid;
+    grid-template-rows: 1fr;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+}
+
+.grid_item {
+    min-height: 3rem;
+    display: flex;
     align-items: center;
-}
-
-.team_score {
-    font-size: 2rem;
-}
-
-.top_player_info_container {
-    width: 100%;
-    display: flex;
-}
-
-.top_player_info {
-    width: 100%;
-    padding: 1rem;
+    justify-content: center;
+    /* border: 1px solid #333; */
 }
 
 .title {
-    font-weight: 700;
+    font-size: 1.5rem;
 }
 
-.player {
-    margin-top: 1rem;
+.team_name {
+    display: flex;
+    align-items: center;
+    justify-content: right;
 }
-
 /* Scorecard styles ----------------------------------------------------------------------------------------------------------- */
