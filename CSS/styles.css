@@ -3,10 +3,12 @@
     --hover-transition: 250ms;
 
     --font-colour-dark: #272826;
-    --font-colour-light: #E8EBF7;
+    --font-colour-light: #AFBDCA;
 
-    --theme-colour-main: #D9D9D9;
+    --theme-colour-main: #F3F7FB;
     --theme-colour-light: #FFFFFF;
+
+    --border-grey: #AFBDCA;
     
 }
 
@@ -233,6 +235,7 @@ main {
     gap: 1rem;
 
     background-color: var(--theme-colour-light);
+    border: solid 1px var(--border-grey);
     border-radius: 0.5rem;
 }
 
@@ -244,7 +247,7 @@ main {
     width: 100%;
     display: flex;
     justify-content: center;
-    border-bottom: solid 1px var(--font-colour-dark);
+    border-bottom: solid 1px var(--border-grey);
 }
 
 .round_number {
@@ -266,7 +269,7 @@ main {
     display: flex;
     flex-direction: column;
     gap: 1rem;
-    border-left: solid 1px var(--font-colour-dark);
+    border-left: solid 1px var(--border-grey);
 }
 
 .team_score_grid {
@@ -300,4 +303,80 @@ main {
     align-items: center;
     justify-content: right;
 }
+
+.winner {
+    color: red;
+}
 /* Scorecard styles ----------------------------------------------------------------------------------------------------------- */
+
+
+
+
+
+
+
+
+
+
+/* Season stats styles ----------------------------------------------------------------------------------------------------------- */
+.top_stats_grid {
+    margin: 2rem;
+
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+}
+
+.top_stats_container {
+    /* margin: 2rem 0; */
+    padding: 1rem;
+
+    border-radius: 0.5rem;
+    background-color: var(--theme-colour-light);
+    border: solid 1px var(--border-grey);
+    min-width: 15rem;
+}
+
+
+.stat_title {
+    font-size: 1.5rem;
+    text-align: center;
+    padding-bottom: 1rem;
+    margin-bottom: 1rem;
+    border-bottom: solid 1px var(--border-grey);
+}
+
+.top_rank {
+    margin-bottom: 2rem;
+    display: grid;
+    grid-template-rows: 1fr;
+    grid-template-columns: 1fr 5fr 2fr;
+    gap: 1rem;
+}
+
+.runner_ups {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    font-size: 75%;
+}
+
+.runner_ups_grid {
+    display: grid;
+    grid-template-rows: 1fr;
+    grid-template-columns: 1fr 5fr 2fr;
+    gap: 1rem;
+}
+
+.player_team_name {
+    font-size: 75%;
+    color: var(--font-colour-light);
+}
+
+.stats_grid_item {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+/* Season stats styles ----------------------------------------------------------------------------------------------------------- */
