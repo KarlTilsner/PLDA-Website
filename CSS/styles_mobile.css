@@ -1,19 +1,5 @@
-.scorecard {
-    margin: 1rem 0;
-    width: 80%;
-    display: flex;
-    gap: 2rem;
-    flex-direction: column;
-    justify-content: center;
-}
-
-.match_info_container {
-    padding: calc(100% - 2rem);
-
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-
-    background-color: var(--theme-colour-light);
-    border-radius: 0.5rem;
+@media only screen and (max-width: 900px) {
+    .hero_title {
+        font-size: 5rem;
+    }
 }
