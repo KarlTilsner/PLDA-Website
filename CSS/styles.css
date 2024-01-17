@@ -79,6 +79,18 @@ header {
     cursor: pointer;
     opacity: var(--hover);
 }
+
+@media only screen and (max-width: 900px) {
+    header {
+        font-size: 75%;
+    }
+
+    .header_logo {
+        width: 3rem;
+        height: 3rem;
+    }
+
+}
 /* header styles ----------------------------------------------------------------------------------------------------------- */
 
 
@@ -199,6 +211,12 @@ main {
 .hero_title {
     font-size: 10rem;
     font-family: 700;
+}
+
+@media only screen and (max-width: 900px) {
+    .hero_title {
+        font-size: 5rem;
+    }
 }
 /* Main body styles ----------------------------------------------------------------------------------------------------------- */
 
@@ -389,4 +407,27 @@ main {
     flex-direction: column;
     justify-content: center;
 }
+
+@media only screen and (max-width: 900px) {
+    .top_stats_grid {
+        margin: 2rem;
+    
+        display: grid;
+        grid-template-rows: 1fr 1fr 1fr 1fr;
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+}
 /* Season stats styles ----------------------------------------------------------------------------------------------------------- */
+
+
+
+
+
+
+
+
+
+
+
+
