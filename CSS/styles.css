@@ -429,5 +429,83 @@ main {
 
 
 
+/* Scoresheet styles ----------------------------------------------------------------------------------------------------------- */
+input[type="text"] {
+    padding: 0.5rem;
+    border: 1px var(--border-grey) solid;
+    border-radius: 0.25rem;
+    min-width: none;
+}
+
+input[type="number"] {
+    padding: 0.5rem;
+    border: 1px var(--border-grey) solid;
+    border-radius: 0.25rem;
+    min-width: none;
+}
+
+.scoresheet {
+    width: 80%;
+    padding: 2rem;
+    margin: 2rem 0;
+
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    
+    background-color: var(--theme-colour-light);
+    border: solid 1px var(--border-grey);
+    border-radius: 0.5rem;
+}
+
+.match_date_input_container {
+    width: 100%;
+}
+
+.match_date_input {
+    width: 25%;
+}
+
+.team_name_input_container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+}
+
+.team_name_input {
+    width: 75%;
+}
+
+.game_container {
+    display: flex;
+    flex-direction: column;
+}
+
+.game_grid {
+    display: grid;
+    grid-template-columns: 5fr 2fr 2fr 0.5fr 5fr 2fr 2fr;
+}
+
+.game_grid_item {
+    padding: 0.5rem;
+    /* border: 1px solid black; */
+}
+
+.grid_input {
+    width: calc(100% - 1rem - 2.5px);
+}
+
+.player_no {
+    text-align: center;
+}
+/* Scoresheet styles ----------------------------------------------------------------------------------------------------------- */
+
+
+
+
+
+
+
+
 
 

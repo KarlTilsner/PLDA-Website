@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Port Lincoln Darts Association</title>
+    <link rel="stylesheet" href="CSS/styles.css">
+    <script src="JS/onload.js"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+
+    <script defer src="https://www.gstatic.com/firebasejs/10.7.2/firebase-app-compat.js"></script>
+    <script defer src="https://www.gstatic.com/firebasejs/10.7.2/firebase-auth-compat.js"></script>
+    <script defer src="https://www.gstatic.com/firebasejs/10.7.2/firebase-firestore-compat.js"></script>
+
+    <script defer src="JS/init-firebase.js"></script>
+        
+    <!-- <script defer src="JS/index.js" ></script> -->
+</head>
+
+
+
+
+
+<body>
+    <header id="documentHeader"></header>
+
+    <main>
+
+        <!-- <h1>My awesome app</h1>
+        <a href="https://www.youtube.com/watch?v=q5J5ho7YUhA" target="_blank"><h1>video</h1></a>
+
+        <section id="whenSignedOut">
+            <button id="signInBtn">Sign In With Google</button>
+        </section>
+
+        <section id="whenSignedIn" hidden="true">
+            <div id="userDetails"></div>
+            <button id="signOutBtn">Sign Out</button>
+        </section>
+
+        <div id="dataDisplay"></div> -->
+
+
+
+
+        <div class="scoresheet">
+            <h1>Match scoresheet entry</h1>
+
+            <div class="match_date_input_container">
+                <div class="title">Match Date</div>
+                <input type="text" class="match_date_input">
+            </div>
+
+            <div class="team_name_input_container">
+                <div>
+                    <div class="title">Home</div>
+                    <input type="text" class="team_name_input">
+                </div>
+
+                <div>
+                    <div class="title">Away</div>
+                    <input type="text" class="team_name_input">
+                </div>
+            </div>
+
+            <div class="game_container">
+                <div class="title">Singles</div>
+
+                <div class="game_grid">
+                    <input type="text" class="grid_input" placeholder="Player Name">
+                    <input type="number" min="0" class="grid_input" placeholder="Pegs">
+                    <input type="number" min="0" class="grid_input" placeholder="Wins">
+                    <div class="game_grid_item player_no">1</div>
+                    <input type="text" class="grid_input" placeholder="Player Name">
+                    <input type="number" min="0" class="grid_input" placeholder="Pegs">
+                    <input type="number" min="0" class="grid_input" placeholder="Wins">
+                </div>
+                <div class="game_grid">
+                    <input type="text" class="grid_input" placeholder="Player Name">
+                    <input type="number" min="0" class="grid_input" placeholder="Pegs">
+                    <input type="number" min="0" class="grid_input" placeholder="Wins">
+                    <div class="game_grid_item player_no">2</div>
+                    <input type="text" class="grid_input" placeholder="Player Name">
+                    <input type="number" min="0" class="grid_input" placeholder="Pegs">
+                    <input type="number" min="0" class="grid_input" placeholder="Wins">
+                </div>
+                <div class="game_grid">
+                    <input type="text" class="grid_input" placeholder="Player Name">
+                    <input type="number" min="0" class="grid_input" placeholder="Pegs">
+                    <input type="number" min="0" class="grid_input" placeholder="Wins">
+                    <div class="game_grid_item player_no">3</div>
+                    <input type="text" class="grid_input" placeholder="Player Name">
+                    <input type="number" min="0" class="grid_input" placeholder="Pegs">
+                    <input type="number" min="0" class="grid_input" placeholder="Wins">
+                </div>
+                <div class="game_grid">
+                    <input type="text" class="grid_input" placeholder="Player Name">
+                    <input type="number" min="0" class="grid_input" placeholder="Pegs">
+                    <input type="number" min="0" class="grid_input" placeholder="Wins">
+                    <div class="game_grid_item player_no">4</div>
+                    <input type="text" class="grid_input" placeholder="Player Name">
+                    <input type="number" min="0" class="grid_input" placeholder="Pegs">
+                    <input type="number" min="0" class="grid_input" placeholder="Wins">
+                </div>
+            </div>
+
+
+
+            <div class="game_container">
+                <div class="title">Doubles</div>
+
+                <div class="game_grid">
+                    <input type="text" class="grid_input" placeholder="Player Name">
+                    <input type="number" min="0" class="grid_input" placeholder="Pegs">
+                    <input type="number" min="0" class="grid_input" placeholder="Wins">
+                    <div class="game_grid_item player_no">1</div>
+                    <input type="text" class="grid_input" placeholder="Player Name">
+                    <input type="number" min="0" class="grid_input" placeholder="Pegs">
+                    <input type="number" min="0" class="grid_input" placeholder="Wins">
+                </div>
+                <div class="game_grid">
+                    <input type="text" class="grid_input" placeholder="Player Name">
+                    <input type="number" min="0" class="grid_input" placeholder="Pegs">
+                    <input type="number" min="0" class="grid_input" placeholder="Wins">
+                    <div class="game_grid_item player_no">2</div>
+                    <input type="text" class="grid_input" placeholder="Player Name">
+                    <input type="number" min="0" class="grid_input" placeholder="Pegs">
+                    <input type="number" min="0" class="grid_input" placeholder="Wins">
+                </div>
+                <div class="game_grid">
+                    <input type="text" class="grid_input" placeholder="Player Name">
+                    <input type="number" min="0" class="grid_input" placeholder="Pegs">
+                    <input type="number" min="0" class="grid_input" placeholder="Wins">
+                    <div class="game_grid_item player_no">3</div>
+                    <input type="text" class="grid_input" placeholder="Player Name">
+                    <input type="number" min="0" class="grid_input" placeholder="Pegs">
+                    <input type="number" min="0" class="grid_input" placeholder="Wins">
+                </div>
+                <div class="game_grid">
+                    <input type="text" class="grid_input" placeholder="Player Name">
+                    <input type="number" min="0" class="grid_input" placeholder="Pegs">
+                    <input type="number" min="0" class="grid_input" placeholder="Wins">
+                    <div class="game_grid_item player_no">4</div>
+                    <input type="text" class="grid_input" placeholder="Player Name">
+                    <input type="number" min="0" class="grid_input" placeholder="Pegs">
+                    <input type="number" min="0" class="grid_input" placeholder="Wins">
+                </div>
+            </div>
+
+
+
+            <div class="game_container">
+                <div class="title">Triples</div>
+
+                <div class="game_grid">
+                    <input type="text" class="grid_input" placeholder="Player Name">
+                    <input type="number" min="0" class="grid_input" placeholder="Pegs">
+                    <input type="number" min="0" class="grid_input" placeholder="Wins">
+                    <div class="game_grid_item player_no">1</div>
+                    <input type="text" class="grid_input" placeholder="Player Name">
+                    <input type="number" min="0" class="grid_input" placeholder="Pegs">
+                    <input type="number" min="0" class="grid_input" placeholder="Wins">
+                </div>
+                <div class="game_grid">
+                    <input type="text" class="grid_input" placeholder="Player Name">
+                    <input type="number" min="0" class="grid_input" placeholder="Pegs">
+                    <input type="number" min="0" class="grid_input" placeholder="Wins">
+                    <div class="game_grid_item player_no">2</div>
+                    <input type="text" class="grid_input" placeholder="Player Name">
+                    <input type="number" min="0" class="grid_input" placeholder="Pegs">
+                    <input type="number" min="0" class="grid_input" placeholder="Wins">
+                </div>
+                <div class="game_grid">
+                    <input type="text" class="grid_input" placeholder="Player Name">
+                    <input type="number" min="0" class="grid_input" placeholder="Pegs">
+                    <input type="number" min="0" class="grid_input" placeholder="Wins">
+                    <div class="game_grid_item player_no">3</div>
+                    <input type="text" class="grid_input" placeholder="Player Name">
+                    <input type="number" min="0" class="grid_input" placeholder="Pegs">
+                    <input type="number" min="0" class="grid_input" placeholder="Wins">
+                </div>
+                <div class="game_grid">
+                    <input type="text" class="grid_input" placeholder="Player Name">
+                    <input type="number" min="0" class="grid_input" placeholder="Pegs">
+                    <input type="number" min="0" class="grid_input" placeholder="Wins">
+                    <div class="game_grid_item player_no">4</div>
+                    <input type="text" class="grid_input" placeholder="Player Name">
+                    <input type="number" min="0" class="grid_input" placeholder="Pegs">
+                    <input type="number" min="0" class="grid_input" placeholder="Wins">
+                </div>
+            </div>
+
+
+        </div>
+
+
+
+
+
+
+    </main>
+
+    <footer id="documentFooter"></footer>
+</body>
+</html>
