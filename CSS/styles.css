@@ -463,6 +463,13 @@ input[type="number"] {
     min-width: none;
 }
 
+input[type="date"] {
+    padding: 0.5rem;
+    border: 1px var(--border-grey) solid;
+    border-radius: 0.25rem;
+    min-width: none;
+}
+
 .scoresheet {
     width: 80%;
     padding: 2rem;
