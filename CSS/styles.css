@@ -19,6 +19,25 @@ body {
     background-color: var(--theme-colour-main);
 }
 
+.flex_basic {
+    display: flex;
+    width: 100%;
+}
+
+.flex_basic_item {
+    width: 100%;
+}
+
+.flex_centre {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.flex_vert_centre {
+    display: flex;
+    align-items: center;
+}
 
 
 
@@ -475,17 +494,6 @@ input[type="number"] {
     width: 75%;
 }
 
-.singles_game_container {
-    display: flex;
-    flex-direction: column;
-}
-
-.team_game_container {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-}
-
 .game_grid {
     display: grid;
     grid-template-columns: 5fr 2fr 2fr 5fr 2fr 2fr;
@@ -509,12 +517,6 @@ input[type="number"] {
     height: 100%;
 }
 
-.game_results_container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
-
 .game_results {
     display: flex;
     justify-content: space-around;
@@ -522,6 +524,40 @@ input[type="number"] {
 
 .winner_team_name {
     text-align: center;
+}
+
+.ton_grid_container {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.ton_grid {
+    display: grid;
+    grid-template-columns: 2fr 6fr 2fr;
+}
+
+.score_entry_submit {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.score_entry_submit_button {
+    background-color: #3498db;
+    color: #fff;
+    border: none;
+    padding: 1rem 2rem;
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    border-radius: 0.25rem;
+    transition: background-color 0.3s ease;
+}
+
+.score_entry_submit_button:hover {
+    background-color: #217dbb;
 }
 /* Scoresheet styles ----------------------------------------------------------------------------------------------------------- */
 
