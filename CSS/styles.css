@@ -541,7 +541,8 @@ input[type="date"] {
 
 .ton_grid {
     display: grid;
-    grid-template-columns: 2fr 6fr 2fr;
+    gap: 1rem;
+    grid-template-columns: 2fr 4fr 3fr 1fr;
 }
 
 .score_entry_submit {

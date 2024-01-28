@@ -296,6 +296,8 @@ async function updateScoresheet() {
                     if (singles.players[i].pegs == undefined) {
                         singles.players[i].pegs = 0;
                     }
+
+                    singles.players[i].pegs = Number(singles.players[i].pegs);
     
                     if (singles.players[i].pegs > maxPeg) {
                         maxPeg = Number(singles.players[i].pegs);
@@ -321,6 +323,8 @@ async function updateScoresheet() {
                         if (player.pegs == undefined) {
                             player.pegs = 0;
                         }
+
+                        player.pegs = Number(player.pegs);
                         
                         teamPegs += Number(player.pegs);
                     });
@@ -349,6 +353,8 @@ async function updateScoresheet() {
                         if (player.pegs == undefined) {
                             player.pegs = 0;
                         }
+
+                        player.pegs = Number(player.pegs);
                         
                         teamPegs += Number(player.pegs);
                     });
@@ -364,40 +370,165 @@ async function updateScoresheet() {
             console.log("Triples matches are incomplete");
         }
     }
-    await countPegs(); 
+    await countPegs();
 
 
     
+    function getAllPlayers() {
+        const temp_unique_players = [];
+        scoresheet_object.singles.map(singles => {
+            singles.players.map(player => {
+                if (player.name) {
+                    player.name = player.name.trim();
+                    // Check if player is in temp_unique_players
+                    const existingPlayerIndex = temp_unique_players.findIndex(p => p.name === player.name);
+                    if (existingPlayerIndex === -1) {
+                        // Player is not in temp_unique_players, add them
+                        temp_unique_players.push({
+                            name: player.name,
+                            tons: [],
+                            pegs_high: [],
+                            pegs: player.pegs,
+                            team: player.team
+                        });
+                    } else {
+                        // Player is already in temp_unique_players, increase their peg count
+                        temp_unique_players[existingPlayerIndex].pegs += player.pegs;
+                    }
+                }
+            });
+        });
+
+        scoresheet_object.doubles.map(doubles => {
+            doubles.teams.map(team => {
+                team.players.map(player => {
+                    if (player.name) {
+                        player.name = player.name.trim();
+                        // Check if player is in temp_unique_players
+                        const existingPlayerIndex = temp_unique_players.findIndex(p => p.name === player.name);
+                        if (existingPlayerIndex === -1) {
+                            // Player is not in temp_unique_players, add them
+                            temp_unique_players.push({
+                                name: player.name,
+                                tons: [],
+                                pegs_high: [],
+                                pegs: player.pegs,
+                                team: team.team
+                            });
+                        } else {
+                            // Player is already in temp_unique_players, increase their peg count
+                            temp_unique_players[existingPlayerIndex].pegs += player.pegs;
+                        }
+                    }
+                });
+            });
+        });
+
+        scoresheet_object.triples.map(triples => {
+            triples.teams.map(team => {
+                team.players.map(player => {
+                    if (player.name) {
+                        player.name = player.name.trim();
+                        // Check if player is in temp_unique_players
+                        const existingPlayerIndex = temp_unique_players.findIndex(p => p.name === player.name);
+                        if (existingPlayerIndex === -1) {
+                            // Player is not in temp_unique_players, add them
+                            temp_unique_players.push({
+                                name: player.name,
+                                tons: [],
+                                pegs_high: [],
+                                pegs: player.pegs,
+                                team: team.team
+                            });
+                        } else {
+                            // Player is already in temp_unique_players, increase their peg count
+                            temp_unique_players[existingPlayerIndex].pegs += player.pegs;
+                        }
+                    }
+                });
+            });
+        });
+
+        // Sort the array by player name in alphabetical order
+        temp_unique_players.sort((a, b) => {
+            // Convert names to lowercase for case-insensitive comparison
+            const nameA = a.name.toLowerCase();
+            const nameB = b.name.toLowerCase();
+            
+            if (nameA < nameB) return -1;
+            if (nameA > nameB) return 1;
+            return 0;
+        });
+
+        // finalise data
+        const data = {home: [], away:[]};
+        temp_unique_players.map(player => {
+            if (player.team == "home") {
+                data.home.push(player);
+            }
+
+            if (player.team == "away") {
+                data.away.push(player);
+            }
+        });
+
+        return data;
+    }
+    const all_unique_players = getAllPlayers();
 
 
 
-
-
-
-
-    
-
-
-
-    // need to collect all unique names and respective pegs before doing this function
     async function playerStatsElements() {
-        document.getElementById('home_playerstats_player_name_1').innerText = input_data.home_singles_player_name_1;
-        document.getElementById('home_playerstats_player_name_2').innerText = input_data.home_singles_player_name_2;
-        document.getElementById('home_playerstats_player_name_3').innerText = input_data.home_singles_player_name_3;
-        document.getElementById('home_playerstats_player_name_4').innerText = input_data.home_singles_player_name_4;
-        document.getElementById('home_playerstats_player_name_5').innerText = input_data.home_singles_player_name_5;
-        document.getElementById('home_playerstats_player_name_6').innerText = input_data.home_singles_player_name_6;
-        document.getElementById('home_playerstats_player_name_7').innerText = input_data.home_singles_player_name_1;
+        // refresh the names and pegs to prevent duplicate players bug
+        for (let i = 0; i < 7; i++) {
+            document.getElementById(`home_playerstats_player_name_${i + 1}`).innerText = '----------';
+            document.getElementById(`away_playerstats_player_name_${i + 1}`).innerText = '----------';
+        }
 
-        document.getElementById('away_playerstats_player_name_1').innerText = input_data.away_singles_player_name_1;
-        document.getElementById('away_playerstats_player_name_2').innerText = input_data.away_singles_player_name_2;
-        document.getElementById('away_playerstats_player_name_3').innerText = input_data.away_singles_player_name_3;
-        document.getElementById('away_playerstats_player_name_4').innerText = input_data.away_singles_player_name_4;
-        document.getElementById('away_playerstats_player_name_5').innerText = input_data.away_singles_player_name_5;
-        document.getElementById('away_playerstats_player_name_6').innerText = input_data.away_singles_player_name_6;
-        document.getElementById('away_playerstats_player_name_7').innerText = input_data.away_singles_player_name_1;
+        // add players into the scoresheet and read their tons and high pegs
+        for (let i = 0; i < all_unique_players.home.length; i++) {
+            document.getElementById(`home_playerstats_player_name_${i + 1}`).innerText = all_unique_players.home[i].name;
+            document.getElementById(`home_playerstats_pegs_${i + 1}`).innerText = `Pegs: ${all_unique_players.home[i].pegs}`;
+
+            // collect player tons
+            const playerTonsText = document.getElementById(`home_playerstats_tons_input_${i + 1}`).value;
+            if (playerTonsText) {
+                all_unique_players.home[i].tons = playerTonsText.trim().split(" ").map(Number);
+            }
+
+            // collect player pegs
+            const playerHighPegsText = document.getElementById(`home_playerstats_pegs_input_${i + 1}`).value;
+            if (playerHighPegsText) {
+                all_unique_players.home[i].pegs_high = playerHighPegsText.trim().split(" ").map(Number);
+            }
+        }
+
+        for (let i = 0; i < all_unique_players.away.length; i++) {
+            document.getElementById(`away_playerstats_player_name_${i + 1}`).innerText = all_unique_players.away[i].name;
+            document.getElementById(`away_playerstats_pegs_${i + 1}`).innerText = `Pegs: ${all_unique_players.away[i].pegs}`;
+
+            // collect player tons
+            const playerTonsText = document.getElementById(`away_playerstats_tons_input_${i + 1}`).value;
+            if (playerTonsText) {
+                all_unique_players.away[i].tons = playerTonsText.trim().split(" ").map(Number);
+            }
+
+            // collect player pegs
+            const playerHighPegsText = document.getElementById(`away_playerstats_pegs_input_${i + 1}`).value;
+            if (playerHighPegsText) {
+                all_unique_players.away[i].pegs_high = playerHighPegsText.trim().split(" ").map(Number);
+            }
+        }
+
+        console.log(all_unique_players);
+
+        // update scoresheet object with completed player stats
+        scoresheet_object.home_team.player_stats = all_unique_players.home;
+        scoresheet_object.away_team.player_stats = all_unique_players.away;
     }
     playerStatsElements();
+
+
 
 
 
@@ -410,9 +541,10 @@ async function updateScoresheet() {
 
 
 
+// TODO:
 // get total wins for each team
-// determine who won which game
-// generate each players stats
-// get tons for each player
-// get high pegs for each player
-// make all numbers actual numbers
+// get elemets on the UI to update
+// make winter darts version
+
+// make match date, team names, and all player names required to submit
+// enforce 100-180 tons and 75-170 high pegs
