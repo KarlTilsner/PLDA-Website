@@ -305,6 +305,14 @@ async function updateScoresheet() {
                     }
                 }
                 singles.players[winnerIndex].win = true;
+
+                // update team wins
+                if (singles.players[winnerIndex].team == "home") {
+                    scoresheet_object.home_team.wins++;
+                }
+                if (singles.players[winnerIndex].team == "away") {
+                    scoresheet_object.away_team.wins++;
+                }
             });
         } catch (error) {
             console.log("Singles matches are incomplete");
@@ -335,6 +343,14 @@ async function updateScoresheet() {
                     }
                 }
                 doubles.teams[winnerIndex].win = true;
+
+                // update team wins
+                if (doubles.teams[winnerIndex].team == "home") {
+                    scoresheet_object.home_team.wins++;
+                }
+                if (doubles.teams[winnerIndex].team == "away") {
+                    scoresheet_object.away_team.wins++;
+                }
             });
         } catch (error) {
             console.log("Doubles matches are incomplete");
@@ -365,6 +381,14 @@ async function updateScoresheet() {
                     }
                 }
                 triples.teams[winnerIndex].win = true;
+
+                // update team wins
+                if (triples.teams[winnerIndex].team == "home") {
+                    scoresheet_object.home_team.wins++;
+                }
+                if (triples.teams[winnerIndex].team == "away") {
+                    scoresheet_object.away_team.wins++;
+                }
             });
         } catch (error) {
             console.log("Triples matches are incomplete");
@@ -373,7 +397,7 @@ async function updateScoresheet() {
     await countPegs();
 
 
-    
+
     function getAllPlayers() {
         const temp_unique_players = [];
         scoresheet_object.singles.map(singles => {
@@ -535,6 +559,15 @@ async function updateScoresheet() {
     document.getElementById('home_name_playerstats').innerText = input_data.home_team_name;
     document.getElementById('away_name_playerstats').innerText = input_data.away_team_name;
 
+
+    // game results segment
+    document.getElementById('home_results_games').innerText = `Games: ${scoresheet_object.home_team.wins}`;
+    document.getElementById('away_results_games').innerText = `Games: ${scoresheet_object.away_team.wins}`;
+    if (scoresheet_object.home_team.wins > scoresheet_object.away_team.wins) {
+        document.getElementById('game_winner_name').innerText = `Winner: ${scoresheet_object.home_team.name}`;
+    } else document.getElementById('game_winner_name').innerText = `Winner: ${scoresheet_object.away_team.name}`;
+
+
     console.log(scoresheet_object);
 }
 
@@ -542,9 +575,10 @@ async function updateScoresheet() {
 
 
 // TODO:
-// get total wins for each team
 // get elemets on the UI to update
 // make winter darts version
+
+// add list of existing players to the dropdown 
 
 // make match date, team names, and all player names required to submit
 // enforce 100-180 tons and 75-170 high pegs
