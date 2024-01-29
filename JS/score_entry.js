@@ -636,12 +636,17 @@ uploadDataBtn.addEventListener('click', function() {
         const user = firebase.auth().currentUser;
 
         if (user) {
-            const db = firebase.firestore();
-            let created_at = `${input_data.match_creation_date} ${input_data.home_team_name} vs ${input_data.away_team_name}`;
-            db.collection("Seasons").doc("2023-24 Summer").collection("Matches").doc(created_at).set(scoresheet_object);
-            console.log(created_at);
-            alert(created_at);
-        } else console.log("You need to sign in");
+            try {
+                const db = firebase.firestore();
+                let created_at = `${input_data.match_creation_date} ${input_data.home_team_name} vs ${input_data.away_team_name}`;
+                db.collection("Seasons").doc("2023-24 Summer").collection("Matches").doc(created_at).set(scoresheet_object);
+                console.log(created_at);
+                alert(created_at);
+            } catch (error) {
+                alert(error);
+            }
+
+        } else alert("You need to sign in");
 
 
     });
