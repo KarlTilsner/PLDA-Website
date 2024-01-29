@@ -1,3 +1,51 @@
+const auth = firebase.auth();
+
+const whenSignedIn = document.getElementById('whenSignedIn');
+const whenSignedOut = document.getElementById('whenSignedOut');
+
+const signInBtn = document.getElementById('signInBtn');
+const signOutBtn = document.getElementById('signOutBtn');
+
+const userDetails = document.getElementById('userDetails');
+
+
+
+
+
+const provider = new firebase.auth.GoogleAuthProvider();
+
+signInBtn.onclick = () => auth.signInWithPopup(provider);
+
+signOutBtn.onclick = () => auth.signOut();
+
+auth.onAuthStateChanged(user => {
+    if (user) {
+        // signed in
+        whenSignedIn.style.display = "flex";
+        whenSignedOut.hidden = true;
+        userDetails.innerHTML = `<h3>Hello ${user.displayName}</h3><p>Your ID is: ${user.uid}</p>`;
+    } else {
+        // not signed in
+        whenSignedIn.style.display = "none";
+        whenSignedOut.hidden = false;
+        userDetails.innerHTML = '';
+    }
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 // Select all elements
 let allElements = document.querySelectorAll('*');
 
@@ -36,11 +84,11 @@ function updateNamesList(name) {
 
 
 
-
+let scoresheet_object = {};
 
 
 async function updateScoresheet() {
-    const scoresheet_object = {
+    scoresheet_object = {
         home_team: {
             name: input_data.home_team_name,
             wins: 0,
@@ -506,7 +554,7 @@ async function updateScoresheet() {
         // refresh the names and pegs to prevent duplicate players bug
         for (let i = 0; i < 7; i++) {
             document.getElementById(`home_playerstats_player_name_${i + 1}`).innerText = '----------';
-            document.getElementById(`away_playerstats_player_name_${i + 1}`).innerText = '----------';
+            document.getElementById(`away_playerstats_player_name_${i + 1}`).innerText = '----------'; // fix to clear pegs ---------------------------------------------------------------------------------
         }
 
         // add players into the scoresheet and read their tons and high pegs
@@ -574,11 +622,37 @@ async function updateScoresheet() {
 
 
 
+
+// upload all data to firestore
+const form = document.getElementById('scoresheet_form'); 
+const uploadDataBtn = document.getElementById('uploadDataBtn'); 
+
+uploadDataBtn.addEventListener('click', function() {
+    // Add a submit event listener to the form
+    form.addEventListener('submit', function(event) {
+        // Prevent the default form submission behavior
+        event.preventDefault();
+        
+        const db = firebase.firestore();
+        let created_at = `${input_data.match_creation_date} ${input_data.home_team_name} vs ${input_data.away_team_name}`;
+        db.collection("Seasons").doc("2023-24 Summer").collection("Matches").doc(created_at).set(scoresheet_object);
+        console.log(created_at);
+        alert(created_at);
+
+    });
+});
+
+
+
+
+
+
 // TODO:
 // get elemets on the UI to update
 // make winter darts version
 
 // add list of existing players to the dropdown 
 
-// make match date, team names, and all player names required to submit
 // enforce 100-180 tons and 75-170 high pegs
+
+// ignore case sensitivity AaBbCc

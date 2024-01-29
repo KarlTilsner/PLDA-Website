@@ -477,11 +477,17 @@ input[type="date"] {
 
     display: flex;
     flex-direction: column;
-    gap: 2rem;
+    align-items: center;
     
     background-color: var(--theme-colour-light);
     border: solid 1px var(--border-grey);
     border-radius: 0.5rem;
+}
+
+#whenSignedIn {
+    display: none;
+    flex-direction: column;
+    gap: 2rem;
 }
 
 .match_date_input_container {
@@ -565,6 +571,38 @@ input[type="date"] {
 }
 
 .score_entry_submit_button:hover {
+    background-color: #217dbb;
+}
+
+.sign_out_button {
+    background-color: #FF5733;
+    color: #fff;
+    border: none;
+    padding: 1rem 2rem;
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    border-radius: 0.25rem;
+    transition: background-color 0.3s ease;
+}
+
+.sign_out_button:hover {
+    background-color: #D9534F;
+}
+
+.sign_in_button {
+    background-color: #3498db;
+    color: #fff;
+    border: none;
+    padding: 1rem 2rem;
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    border-radius: 0.25rem;
+    transition: background-color 0.3s ease;
+}
+
+.sign_in_button:hover {
     background-color: #217dbb;
 }
 /* Scoresheet styles ----------------------------------------------------------------------------------------------------------- */
