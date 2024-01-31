@@ -554,7 +554,9 @@ async function updateScoresheet() {
         // refresh the names and pegs to prevent duplicate players bug
         for (let i = 0; i < 7; i++) {
             document.getElementById(`home_playerstats_player_name_${i + 1}`).innerText = '----------';
-            document.getElementById(`away_playerstats_player_name_${i + 1}`).innerText = '----------'; // fix to clear pegs ---------------------------------------------------------------------------------
+            document.getElementById(`away_playerstats_player_name_${i + 1}`).innerText = '----------';
+            document.getElementById(`home_playerstats_pegs_${i + 1}`).innerText = 'Pegs: 0';
+            document.getElementById(`away_playerstats_pegs_${i + 1}`).innerText = 'Pegs: 0';
         }
 
         // add players into the scoresheet and read their tons and high pegs
@@ -599,6 +601,42 @@ async function updateScoresheet() {
         scoresheet_object.away_team.player_stats = all_unique_players.away;
     }
     playerStatsElements();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    // name dropdown
+    function createNamesList() {
+        const listContainer = document.getElementById('namesListContainer');
+
+        if (listContainer.hasChildNodes()) {
+            listContainer.removeChild(listContainer.firstChild);
+        }
+
+        let options;
+
+        all_unique_players.home.map(player => {
+            options += `<option value="${player.name}"></option>`;
+        });
+
+        all_unique_players.away.map(player => {
+            options += `<option value="${player.name}"></option>`;
+        });
+
+        listContainer.innerHTML = `<datalist id="namesList">${options}</datalist>`;
+    }
+    createNamesList();
 
 
 
@@ -659,10 +697,13 @@ uploadDataBtn.addEventListener('click', function() {
 
 // TODO:
 // get elemets on the UI to update
-// make winter darts version
 
-// add list of existing players to the dropdown 
+// add winter darts matches
 
 // enforce 100-180 tons and 75-170 high pegs
 
 // ignore case sensitivity AaBbCc
+
+// get team names and player names from database
+
+// season selection
