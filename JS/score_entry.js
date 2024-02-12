@@ -23,7 +23,7 @@ auth.onAuthStateChanged(user => {
         // signed in
         whenSignedIn.style.display = "flex";
         whenSignedOut.hidden = true;
-        userDetails.innerHTML = `<h3>Hello ${user.displayName}</h3><p>Your ID is: ${user.uid}</p>`;
+        userDetails.innerHTML = `<h3>Hello ${user.displayName}</h3>`; // <p>Your ID is: ${user.uid}</p>
     } else {
         // not signed in
         whenSignedIn.style.display = "none";
@@ -83,8 +83,8 @@ function updateNamesList(name) {
 
 
 
-
 let scoresheet_object = {};
+
 
 
 async function updateScoresheet() {
@@ -552,7 +552,7 @@ async function updateScoresheet() {
 
     async function playerStatsElements() {
         // refresh the names and pegs to prevent duplicate players bug
-        for (let i = 0; i < 7; i++) {
+        for (let i = 0; i < 8; i++) {
             document.getElementById(`home_playerstats_player_name_${i + 1}`).innerText = '----------';
             document.getElementById(`away_playerstats_player_name_${i + 1}`).innerText = '----------';
             document.getElementById(`home_playerstats_pegs_${i + 1}`).innerText = 'Pegs: 0';
@@ -615,28 +615,6 @@ async function updateScoresheet() {
 
 
 
-
-    // name dropdown
-    function createNamesList() {
-        const listContainer = document.getElementById('namesListContainer');
-
-        if (listContainer.hasChildNodes()) {
-            listContainer.removeChild(listContainer.firstChild);
-        }
-
-        let options;
-
-        all_unique_players.home.map(player => {
-            options += `<option value="${player.name}"></option>`;
-        });
-
-        all_unique_players.away.map(player => {
-            options += `<option value="${player.name}"></option>`;
-        });
-
-        listContainer.innerHTML = `<datalist id="namesList">${options}</datalist>`;
-    }
-    createNamesList();
 
 
 
@@ -707,3 +685,249 @@ uploadDataBtn.addEventListener('click', function() {
 // get team names and player names from database
 
 // season selection
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// get all matches and get every player and their stats and upload to firebase
+async function getMatches() {
+    const matches = [];
+
+    // read a collection
+    const db = firebase.firestore();
+    db.collection("Seasons").doc("2023-24 Summer").collection("Matches")
+        .get()
+        .then((querySnapshot) => {
+            querySnapshot.forEach((doc) => {
+                // doc.data() is never undefined for query doc snapshots
+                // console.log(doc.id, " => ", doc.data());
+                matches.push(doc.data());
+            });
+
+            // matches have been collected
+            console.log(matches[0]);
+
+
+
+            // get all unique players that played in the matchs
+            const player_list = [];
+            matches.map(current_match => {
+                current_match.away_team.player_stats.map(player => {
+                    // Check if the player name is not already in the array
+                    if (!player_list.includes(player.name)) {
+                        // Add the player name to the array
+                        player_list.push(player.name);
+                    }
+                });
+
+                current_match.home_team.player_stats.map(player => {
+                    // Check if the player name is not already in the array
+                    if (!player_list.includes(player.name)) {
+                        // Add the player name to the array
+                        player_list.push(player.name);
+                    }
+                });
+            });
+
+
+
+            // for each player update their stats
+            for (let i = 0; i < player_list.length; i++) {
+
+                let tons = [];
+                let pegs_high = [];
+                let teams_played_in = [];
+                // [
+                //     {
+                //         name: "Dart Bods",
+                //         games: 0
+                //     },
+                // ];
+
+                // player data model
+                let playerData = {
+                    name: `${player_list[i]}`,
+                    tons: tons,
+                    tons_count: 0,
+                    pegs_high: pegs_high,
+                    pegs_count: 0,
+
+                    total_wins: 0,
+                    total_losses: 0,
+
+                    singles: {
+                        wins: 0,
+                        losses: 0,
+                        pegs: 0
+                    },
+                    doubles: {
+                        wins: 0,
+                        losses: 0,
+                        pegs: 0
+                    },
+                    triples: {
+                        wins: 0,
+                        losses: 0,
+                        pegs: 0
+                    },
+                    teams: {
+                        wins: 0,
+                        losses: 0,
+                        pegs: 0
+                    },
+
+                    teams_played_in: teams_played_in
+                }
+
+
+                // fill in player data object
+                matches.map(match => {
+                    // get tons and pegs
+                    // searches away team for player
+                    match.away_team.player_stats.map(index => {
+                        // if player matches then add their data to the object
+                        if (index.name == player_list[i]) {
+
+                            // Check if the team name is in the array
+                            const foundTeam = teams_played_in.find(team => team.name === match.away_team.name);
+
+                            // If the team is not found, add a new object to the array
+                            if (!foundTeam) {
+                                teams_played_in.push({
+                                    name: match.away_team.name,
+                                    games: 1 // Assuming the player must have played at least one game
+                                });
+                            } else {
+                                // if the team was found in the list then just add to the game count
+                                teams_played_in.find(team => team.games++);
+                            }
+
+                            // add tons and pegs
+                            index.tons.map(e => tons.push(e));
+                            playerData.tons_count += index.tons.length;
+
+                            index.pegs_high.map(e => pegs_high.push(e));
+                            playerData.pegs_count += index.pegs;
+                        }
+                    });
+
+                    // searches home team for player
+                    match.home_team.player_stats.map(index => {
+                        // if player matches then add their data to the object
+                        if (index.name == player_list[i]) {
+
+                            // Check if the team name is in the array
+                            const foundTeam = teams_played_in.find(team => team.name === match.home_team.name);
+
+                            // If the team is not found, add a new object to the array
+                            if (!foundTeam) {
+                                teams_played_in.push({
+                                    name: match.home_team.name,
+                                    games: 1 // Assuming the player must have played at least one game
+                                });
+                            } else {
+                                // if the team was found in the list then just add to the game count
+                                teams_played_in.find(team => team.games++);
+                            }
+
+                            // add tons and pegs
+                            index.tons.map(e => tons.push(e));
+                            playerData.tons_count += index.tons.length;
+
+                            index.pegs_high.map(e => pegs_high.push(e));
+                            playerData.pegs_count += index.pegs;
+                        }
+                    });
+
+                    // get wins and losses
+                    // singles
+                    match.singles.map(game => {
+                        game.players.map(player => {
+                            if (player.name == player_list[i]) {
+                                if (player.win == true) {
+                                    playerData.singles.wins++;
+                                    playerData.total_wins++;
+                                }
+                                if (player.win == false) {
+                                    playerData.singles.losses++;
+                                    playerData.total_losses++;
+                                }
+                                playerData.singles.pegs += player.pegs;
+                            }
+                        });
+                    });
+
+                    // doubles
+                    match.doubles.map(game => {
+                        game.teams.map(team => {
+                            team.players.map(player => {
+                                if (player.name == player_list[i]) {
+                                    if (team.win == true) {
+                                        playerData.doubles.wins++;
+                                        playerData.total_wins++;
+                                    }
+                                    if (team.win == false) {
+                                        playerData.doubles.losses++;
+                                        playerData.total_losses++;
+                                    }
+                                    playerData.doubles.pegs += player.pegs;
+                                }
+                            });
+                        });
+                    });
+
+                    // triples
+                    match.triples.map(game => {
+                        game.teams.map(team => {
+                            team.players.map(player => {
+                                if (player.name == player_list[i]) {
+                                    if (team.win == true) {
+                                        playerData.triples.wins++;
+                                        playerData.total_wins++;
+                                    }
+                                    if (team.win == false) {
+                                        playerData.triples.losses++;
+                                        playerData.total_losses++;
+                                    }
+                                    playerData.triples.pegs += player.pegs;
+                                }
+                            });
+                        });
+                    });
+
+                });
+            
+                // add player data to firestore
+                console.log(playerData);
+                db.collection("Seasons").doc("2023-24 Summer").collection("Players").doc(`${player_list[i]}`).set(playerData);
+
+
+
+                // name dropdown
+                const listContainer = document.getElementById('namesList');
+                listContainer.innerHTML += `<option value="${playerData.name}"></option>`;
+            }
+
+
+
+        })
+        .catch((error) => {
+            console.log("Error getting documents: ", error);
+        });
+}
+
+getMatches();
