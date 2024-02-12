@@ -480,14 +480,14 @@ input[type="date"] {
     align-items: center;
     
     background-color: var(--theme-colour-light);
-    border: solid 1px var(--border-grey);
+    /* border: solid 1px var(--border-grey); */
     border-radius: 0.5rem;
 }
 
 #whenSignedIn {
     display: none;
     flex-direction: column;
-    gap: 2rem;
+    gap: 3rem;
 }
 
 .match_date_input_container {
@@ -523,8 +523,9 @@ input[type="date"] {
     /* border: 1px solid black; */
 }
 
-.team_group {
-    margin-bottom: 1rem;
+.input_groups {
+    display: grid;
+    gap: 1rem;
 }
 
 .grid_input {

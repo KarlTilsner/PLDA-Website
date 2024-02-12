@@ -23,6 +23,10 @@
 
 
 
+<div id="namesListContainer">
+    <datalist id="namesList"></datalist><!-- store names entered into objects and then load update this list with the names if they aernt already in here -->
+</div>
+
 
 
 <body>
@@ -47,7 +51,6 @@
                     
                     
     
-    
                     <div class="match_date_input_container">
                         <div class="title">Match date</div>
                         <input type="date" class="match_date_input" id="match_creation_date" required>
@@ -68,12 +71,6 @@
                         </div>
                     </div>
     
-    
-    
-                    <div id="namesListContainer">
-                        <datalist id="namesList"></datalist><!-- store names entered into objects and then load update this list with the names if they aernt already in here -->
-                    </div>
-
                     
     
                     <div>
@@ -143,31 +140,38 @@
                         <div class="title">Doubles</div>
     
                         <div class="game_grid">
-                            <div>
-                                <div class="team_group">
+                            <div class="input_groups">
+                                <div>
                                     <input type="text" class="grid_input" placeholder="Player Name" id="home_doubles_player_name_1" list="namesList" required> 
                                     <input type="text" class="grid_input" placeholder="Player Name" id="home_doubles_player_name_2" list="namesList" required> 
                                 </div>
 
-                                <div class="team_group">
+                                <div>
                                     <input type="text" class="grid_input" placeholder="Player Name" id="home_doubles_player_name_3" list="namesList" required> 
                                     <input type="text" class="grid_input" placeholder="Player Name" id="home_doubles_player_name_4" list="namesList" required>  
                                 </div>
 
-                                <div class="team_group">
+                                <div>
                                     <input type="text" class="grid_input" placeholder="Player Name" id="home_doubles_player_name_5" list="namesList" required> 
                                     <input type="text" class="grid_input" placeholder="Player Name" id="home_doubles_player_name_6" list="namesList" required> 
                                 </div>
-                                
                             </div>
                             
-                            <div>
-                                <input type="number" min="0" class="grid_input" placeholder="Pegs" id="home_doubles_pegs_1">
-                                <input type="number" min="0" class="grid_input" placeholder="Pegs" id="home_doubles_pegs_2">
-                                <input type="number" min="0" class="grid_input" placeholder="Pegs" id="home_doubles_pegs_3">
-                                <input type="number" min="0" class="grid_input" placeholder="Pegs" id="home_doubles_pegs_4">
-                                <input type="number" min="0" class="grid_input" placeholder="Pegs" id="home_doubles_pegs_5">
-                                <input type="number" min="0" class="grid_input" placeholder="Pegs" id="home_doubles_pegs_6">
+                            <div class="input_groups">
+                                <div>
+                                    <input type="number" min="0" class="grid_input" placeholder="Pegs" id="home_doubles_pegs_1">
+                                    <input type="number" min="0" class="grid_input" placeholder="Pegs" id="home_doubles_pegs_2">
+                                </div>
+
+                                <div>
+                                    <input type="number" min="0" class="grid_input" placeholder="Pegs" id="home_doubles_pegs_3">
+                                    <input type="number" min="0" class="grid_input" placeholder="Pegs" id="home_doubles_pegs_4">
+                                </div>
+
+                                <div>
+                                    <input type="number" min="0" class="grid_input" placeholder="Pegs" id="home_doubles_pegs_5">
+                                    <input type="number" min="0" class="grid_input" placeholder="Pegs" id="home_doubles_pegs_6">
+                                </div>
                             </div>
     
                             <!-- <div class="win_counter_container">
@@ -176,22 +180,38 @@
                                 <input type="number" class="grid_input win_counter" placeholder="Wins" readonly>
                             </div> -->
     
-                            <div>
-                                <input type="text" class="grid_input" placeholder="Player Name" id="away_doubles_player_name_1" list="namesList" required> 
-                                <input type="text" class="grid_input" placeholder="Player Name" id="away_doubles_player_name_2" list="namesList" required> 
-                                <input type="text" class="grid_input" placeholder="Player Name" id="away_doubles_player_name_3" list="namesList" required> 
-                                <input type="text" class="grid_input" placeholder="Player Name" id="away_doubles_player_name_4" list="namesList" required> 
-                                <input type="text" class="grid_input" placeholder="Player Name" id="away_doubles_player_name_5" list="namesList" required> 
-                                <input type="text" class="grid_input" placeholder="Player Name" id="away_doubles_player_name_6" list="namesList" required> 
+                            <div class="input_groups">
+                                <div>
+                                    <input type="text" class="grid_input" placeholder="Player Name" id="away_doubles_player_name_1" list="namesList" required> 
+                                    <input type="text" class="grid_input" placeholder="Player Name" id="away_doubles_player_name_2" list="namesList" required> 
+                                </div>
+
+                                <div>
+                                    <input type="text" class="grid_input" placeholder="Player Name" id="away_doubles_player_name_3" list="namesList" required> 
+                                    <input type="text" class="grid_input" placeholder="Player Name" id="away_doubles_player_name_4" list="namesList" required> 
+                                </div>
+
+                                <div>
+                                    <input type="text" class="grid_input" placeholder="Player Name" id="away_doubles_player_name_5" list="namesList" required> 
+                                    <input type="text" class="grid_input" placeholder="Player Name" id="away_doubles_player_name_6" list="namesList" required> 
+                                </div>
                             </div>
                             
-                            <div>
-                                <input type="number" min="0" class="grid_input" placeholder="Pegs" id="away_doubles_pegs_1">
-                                <input type="number" min="0" class="grid_input" placeholder="Pegs" id="away_doubles_pegs_2">
-                                <input type="number" min="0" class="grid_input" placeholder="Pegs" id="away_doubles_pegs_3">
-                                <input type="number" min="0" class="grid_input" placeholder="Pegs" id="away_doubles_pegs_4">
-                                <input type="number" min="0" class="grid_input" placeholder="Pegs" id="away_doubles_pegs_5">
-                                <input type="number" min="0" class="grid_input" placeholder="Pegs" id="away_doubles_pegs_6">
+                            <div class="input_groups">
+                                <div>
+                                    <input type="number" min="0" class="grid_input" placeholder="Pegs" id="away_doubles_pegs_1">
+                                    <input type="number" min="0" class="grid_input" placeholder="Pegs" id="away_doubles_pegs_2">
+                                </div>
+
+                                <div>
+                                    <input type="number" min="0" class="grid_input" placeholder="Pegs" id="away_doubles_pegs_3">
+                                    <input type="number" min="0" class="grid_input" placeholder="Pegs" id="away_doubles_pegs_4">
+                                </div>
+
+                                <div>
+                                    <input type="number" min="0" class="grid_input" placeholder="Pegs" id="away_doubles_pegs_5">
+                                    <input type="number" min="0" class="grid_input" placeholder="Pegs" id="away_doubles_pegs_6">
+                                </div>
                             </div>
     
                             <!-- <div class="win_counter_container">
@@ -209,22 +229,32 @@
                         <div class="title">Triples</div>
     
                         <div class="game_grid">
-                            <div>
-                                <input type="text" class="grid_input" placeholder="Player Name" id="home_triples_player_name_1" list="namesList" required> 
-                                <input type="text" class="grid_input" placeholder="Player Name" id="home_triples_player_name_2" list="namesList" required> 
-                                <input type="text" class="grid_input" placeholder="Player Name" id="home_triples_player_name_3" list="namesList" required> 
-                                <input type="text" class="grid_input" placeholder="Player Name" id="home_triples_player_name_4" list="namesList" required> 
-                                <input type="text" class="grid_input" placeholder="Player Name" id="home_triples_player_name_5" list="namesList" required> 
-                                <input type="text" class="grid_input" placeholder="Player Name" id="home_triples_player_name_6" list="namesList" required> 
+                            <div class="input_groups">
+                                <div>
+                                    <input type="text" class="grid_input" placeholder="Player Name" id="home_triples_player_name_1" list="namesList" required> 
+                                    <input type="text" class="grid_input" placeholder="Player Name" id="home_triples_player_name_2" list="namesList" required> 
+                                    <input type="text" class="grid_input" placeholder="Player Name" id="home_triples_player_name_3" list="namesList" required> 
+                                </div>
+
+                                <div>
+                                    <input type="text" class="grid_input" placeholder="Player Name" id="home_triples_player_name_4" list="namesList" required> 
+                                    <input type="text" class="grid_input" placeholder="Player Name" id="home_triples_player_name_5" list="namesList" required> 
+                                    <input type="text" class="grid_input" placeholder="Player Name" id="home_triples_player_name_6" list="namesList" required> 
+                                </div>
                             </div>
                             
-                            <div>
-                                <input type="number" min="0" class="grid_input" placeholder="Pegs" id="home_triples_pegs_1">
-                                <input type="number" min="0" class="grid_input" placeholder="Pegs" id="home_triples_pegs_2">
-                                <input type="number" min="0" class="grid_input" placeholder="Pegs" id="home_triples_pegs_3">
-                                <input type="number" min="0" class="grid_input" placeholder="Pegs" id="home_triples_pegs_4">
-                                <input type="number" min="0" class="grid_input" placeholder="Pegs" id="home_triples_pegs_5">
-                                <input type="number" min="0" class="grid_input" placeholder="Pegs" id="home_triples_pegs_6">
+                            <div class="input_groups">
+                                <div>
+                                    <input type="number" min="0" class="grid_input" placeholder="Pegs" id="home_triples_pegs_1">
+                                    <input type="number" min="0" class="grid_input" placeholder="Pegs" id="home_triples_pegs_2">
+                                    <input type="number" min="0" class="grid_input" placeholder="Pegs" id="home_triples_pegs_3">
+                                </div>
+
+                                <div>
+                                    <input type="number" min="0" class="grid_input" placeholder="Pegs" id="home_triples_pegs_4">
+                                    <input type="number" min="0" class="grid_input" placeholder="Pegs" id="home_triples_pegs_5">
+                                    <input type="number" min="0" class="grid_input" placeholder="Pegs" id="home_triples_pegs_6">
+                                </div>
                             </div>
     
                             <!-- <div class="win_counter_container">
@@ -232,22 +262,32 @@
                                 <input type="number" class="grid_input win_counter" placeholder="Wins" readonly>
                             </div> -->
     
-                            <div>
-                                <input type="text" class="grid_input" placeholder="Player Name" id="away_triples_player_name_1" list="namesList" required> 
-                                <input type="text" class="grid_input" placeholder="Player Name" id="away_triples_player_name_2" list="namesList" required> 
-                                <input type="text" class="grid_input" placeholder="Player Name" id="away_triples_player_name_3" list="namesList" required> 
-                                <input type="text" class="grid_input" placeholder="Player Name" id="away_triples_player_name_4" list="namesList" required> 
-                                <input type="text" class="grid_input" placeholder="Player Name" id="away_triples_player_name_5" list="namesList" required> 
-                                <input type="text" class="grid_input" placeholder="Player Name" id="away_triples_player_name_6" list="namesList" required> 
+                            <div class="input_groups">
+                                <div>
+                                    <input type="text" class="grid_input" placeholder="Player Name" id="away_triples_player_name_1" list="namesList" required> 
+                                    <input type="text" class="grid_input" placeholder="Player Name" id="away_triples_player_name_2" list="namesList" required> 
+                                    <input type="text" class="grid_input" placeholder="Player Name" id="away_triples_player_name_3" list="namesList" required> 
+                                </div>
+
+                                <div>
+                                    <input type="text" class="grid_input" placeholder="Player Name" id="away_triples_player_name_4" list="namesList" required> 
+                                    <input type="text" class="grid_input" placeholder="Player Name" id="away_triples_player_name_5" list="namesList" required> 
+                                    <input type="text" class="grid_input" placeholder="Player Name" id="away_triples_player_name_6" list="namesList" required> 
+                                </div>
                             </div>
                             
-                            <div>
-                                <input type="number" min="0" class="grid_input" placeholder="Pegs" id="away_triples_pegs_1">
-                                <input type="number" min="0" class="grid_input" placeholder="Pegs" id="away_triples_pegs_2">
-                                <input type="number" min="0" class="grid_input" placeholder="Pegs" id="away_triples_pegs_3">
-                                <input type="number" min="0" class="grid_input" placeholder="Pegs" id="away_triples_pegs_4">
-                                <input type="number" min="0" class="grid_input" placeholder="Pegs" id="away_triples_pegs_5">
-                                <input type="number" min="0" class="grid_input" placeholder="Pegs" id="away_triples_pegs_6">
+                            <div class="input_groups">
+                                <div>
+                                    <input type="number" min="0" class="grid_input" placeholder="Pegs" id="away_triples_pegs_1">
+                                    <input type="number" min="0" class="grid_input" placeholder="Pegs" id="away_triples_pegs_2">
+                                    <input type="number" min="0" class="grid_input" placeholder="Pegs" id="away_triples_pegs_3">
+                                </div>
+
+                                <div>
+                                    <input type="number" min="0" class="grid_input" placeholder="Pegs" id="away_triples_pegs_4">
+                                    <input type="number" min="0" class="grid_input" placeholder="Pegs" id="away_triples_pegs_5">
+                                    <input type="number" min="0" class="grid_input" placeholder="Pegs" id="away_triples_pegs_6">
+                                </div>
                             </div>
     
                             <!-- <div class="win_counter_container">
