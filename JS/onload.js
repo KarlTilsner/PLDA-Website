@@ -1,11 +1,11 @@
 document.addEventListener('DOMContentLoaded', async function() {
-    let contentHeader = document.getElementById('documentHeader');
+
     let contentFooter = document.getElementById('documentFooter');
 
     try {
-        const HeaderResponse = await fetch('header.html');
-        const HeaderContent = await HeaderResponse.text();
-        contentHeader.innerHTML = HeaderContent;
+        // const HeaderResponse = await fetch('header.html');
+        // const HeaderContent = await HeaderResponse.text();
+        // document.getElementById('documentHeader').innerHTML = HeaderContent;
 
         const mainResponse = await fetch('home.html');
         const mainContent = await mainResponse.text();
