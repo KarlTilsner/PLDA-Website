@@ -6,12 +6,24 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Port Lincoln Darts Association</title>
         <link rel="stylesheet" href="CSS/styles.css">
-        <script src="JS/index.js"></script>
         <script src="JS/onload.js"></script>
 
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+
+        <script defer src="https://www.gstatic.com/firebasejs/10.7.2/firebase-app-compat.js"></script>
+        <script defer src="https://www.gstatic.com/firebasejs/10.7.2/firebase-auth-compat.js"></script>
+        <script defer src="https://www.gstatic.com/firebasejs/10.7.2/firebase-firestore-compat.js"></script>
+
+        <script defer src="JS/init-firebase.js"></script>
+        <script defer src="JS/header.js"></script>
+        <!-- <script defer src="JS/index.js" ></script> -->
+
+
+
+        <!-- Page Scripts Here -->
+        <script defer src="JS/seasonstats.js"></script>
     </head>
 
 
@@ -19,23 +31,9 @@
 
 
     <body>
-        
         <header id="documentHeader"></header>
     
-        <main>
-            <div class="hero_container">
-                <img class="hero_image" src="Images/hero_image.png">
-                <div class="hero_title_container">
-                    <div class="hero_title">Port Lincoln</div>
-                    <div class="hero_title">Darts Association</div>
-                </div>
-                
-            </div>
-        </main>
-
-        <div class="screen_wide_content">
-            <div>About PLDA</div>
-        </div>
+        <main></main>
     
         <footer id="documentFooter"></footer>
 

@@ -7,6 +7,10 @@ document.addEventListener('DOMContentLoaded', async function() {
         const HeaderContent = await HeaderResponse.text();
         contentHeader.innerHTML = HeaderContent;
 
+        const mainResponse = await fetch('home.html');
+        const mainContent = await mainResponse.text();
+        document.querySelector("main").innerHTML = mainContent;
+
         const FooterResponse = await fetch('footer.html');
         const FooterContent = await FooterResponse.text();
         contentFooter.innerHTML = FooterContent;

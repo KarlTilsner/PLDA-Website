@@ -1,501 +1,502 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Port Lincoln Darts Association</title>
-    <link rel="stylesheet" href="CSS/styles.css">
-    <script src="JS/onload.js"></script>
+    
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Port Lincoln Darts Association</title>
+        <link rel="stylesheet" href="CSS/styles.css">
+        <script src="JS/onload.js"></script>
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;700&display=swap" rel="stylesheet">
 
-    <script defer src="https://www.gstatic.com/firebasejs/10.7.2/firebase-app-compat.js"></script>
-    <script defer src="https://www.gstatic.com/firebasejs/10.7.2/firebase-auth-compat.js"></script>
-    <script defer src="https://www.gstatic.com/firebasejs/10.7.2/firebase-firestore-compat.js"></script>
+        <script defer src="https://www.gstatic.com/firebasejs/10.7.2/firebase-app-compat.js"></script>
+        <script defer src="https://www.gstatic.com/firebasejs/10.7.2/firebase-auth-compat.js"></script>
+        <script defer src="https://www.gstatic.com/firebasejs/10.7.2/firebase-firestore-compat.js"></script>
 
-    <script defer src="JS/init-firebase.js"></script>
+        <script defer src="JS/init-firebase.js"></script>
 
-    <script defer src="JS/score_entry.js"></script>
-    <!-- <script defer src="JS/index.js" ></script> -->
-</head>
-
-
-
-<div id="namesListContainer">
-    <datalist id="namesList"></datalist><!-- store names entered into objects and then load update this list with the names if they aernt already in here -->
-</div>
+        <script defer src="JS/score_entry.js"></script>
+        <!-- <script defer src="JS/index.js" ></script> -->
+    </head>
 
 
 
-<body>
-    <header id="documentHeader"></header>
+    <div id="namesListContainer">
+        <datalist id="namesList"></datalist><!-- store names entered into objects and then load update this list with the names if they aernt already in here -->
+    </div>
 
-    <main>
 
-        <div class="scoresheet">
 
-            <h1>Match scoresheet entry</h1>
+    <body>
+        <header id="documentHeader"></header>
 
-            <section id="whenSignedOut">
-                <button class="sign_in_button" id="signInBtn">Sign In With Google</button>
-            </section>
+        <main>
 
-            <form id="scoresheet_form">
-                <section id="whenSignedIn">
-                    <div>
-                        <div id="userDetails"></div>
-                        <button class="sign_out_button" id="signOutBtn">Sign Out</button>
-                    </div>
-                    
-                    
-    
-                    <div class="match_date_input_container">
-                        <div class="title">Match date</div>
-                        <input type="date" class="match_date_input" id="match_creation_date" required>
-                        <!-- <input type="text" class="match_date_input"> -->
-                    </div>
-    
-    
-    
-                    <div class="team_name_input_container">
-                        <div>
-                            <div class="title">Home</div>
-                            <input type="text" class="team_name_input" id="home_team_name" required>
-                        </div>
-    
-                        <div>
-                            <div class="title">Away</div>
-                            <input type="text" class="team_name_input" id="away_team_name" required>
-                        </div>
-                    </div>
-    
-                    
-    
-                    <div>
-                        <div class="title">Singles</div>
-    
-                        <div class="game_grid">
-                            <div>
-                                <input type="text" class="grid_input" placeholder="Player Name" id="home_singles_player_name_1" list="namesList" required> 
-                                <input type="text" class="grid_input" placeholder="Player Name" id="home_singles_player_name_2" list="namesList" required> 
-                                <input type="text" class="grid_input" placeholder="Player Name" id="home_singles_player_name_3" list="namesList" required> 
-                                <input type="text" class="grid_input" placeholder="Player Name" id="home_singles_player_name_4" list="namesList" required> 
-                                <input type="text" class="grid_input" placeholder="Player Name" id="home_singles_player_name_5" list="namesList" required> 
-                                <input type="text" class="grid_input" placeholder="Player Name" id="home_singles_player_name_6" list="namesList" required> 
-                            </div>
-                            
-                            <div>
-                                <input type="number" min="0" class="grid_input" placeholder="Pegs" id="home_singles_pegs_1">
-                                <input type="number" min="0" class="grid_input" placeholder="Pegs" id="home_singles_pegs_2">
-                                <input type="number" min="0" class="grid_input" placeholder="Pegs" id="home_singles_pegs_3">
-                                <input type="number" min="0" class="grid_input" placeholder="Pegs" id="home_singles_pegs_4">
-                                <input type="number" min="0" class="grid_input" placeholder="Pegs" id="home_singles_pegs_5">
-                                <input type="number" min="0" class="grid_input" placeholder="Pegs" id="home_singles_pegs_6">
-                            </div>
-    
-                            <!-- <div>
-                                <input type="number" class="grid_input" placeholder="Wins" id="home_singles_wins_1" readonly>
-                                <input type="number" class="grid_input" placeholder="Wins" id="home_singles_wins_2" readonly>
-                                <input type="number" class="grid_input" placeholder="Wins" id="home_singles_wins_3" readonly>
-                                <input type="number" class="grid_input" placeholder="Wins" id="home_singles_wins_4" readonly>
-                                <input type="number" class="grid_input" placeholder="Wins" id="home_singles_wins_5" readonly>
-                                <input type="number" class="grid_input" placeholder="Wins" id="home_singles_wins_6" readonly>
-                            </div> -->
-    
-                            <div>
-                                <input type="text" class="grid_input" placeholder="Player Name" id="away_singles_player_name_1" list="namesList" required>
-                                <input type="text" class="grid_input" placeholder="Player Name" id="away_singles_player_name_2" list="namesList" required>
-                                <input type="text" class="grid_input" placeholder="Player Name" id="away_singles_player_name_3" list="namesList" required>
-                                <input type="text" class="grid_input" placeholder="Player Name" id="away_singles_player_name_4" list="namesList" required>
-                                <input type="text" class="grid_input" placeholder="Player Name" id="away_singles_player_name_5" list="namesList" required>
-                                <input type="text" class="grid_input" placeholder="Player Name" id="away_singles_player_name_6" list="namesList" required>
-                            </div>
-                            
-                            <div>
-                                <input type="number" min="0" class="grid_input" placeholder="Pegs" id="away_singles_pegs_1">
-                                <input type="number" min="0" class="grid_input" placeholder="Pegs" id="away_singles_pegs_2">
-                                <input type="number" min="0" class="grid_input" placeholder="Pegs" id="away_singles_pegs_3">
-                                <input type="number" min="0" class="grid_input" placeholder="Pegs" id="away_singles_pegs_4">
-                                <input type="number" min="0" class="grid_input" placeholder="Pegs" id="away_singles_pegs_5">
-                                <input type="number" min="0" class="grid_input" placeholder="Pegs" id="away_singles_pegs_6">
-                            </div>
-    
-                            <!-- <div>
-                                <input type="number" class="grid_input" placeholder="Wins" id="away_singles_wins_1" readonly>
-                                <input type="number" class="grid_input" placeholder="Wins" id="away_singles_wins_2" readonly>
-                                <input type="number" class="grid_input" placeholder="Wins" id="away_singles_wins_3" readonly>
-                                <input type="number" class="grid_input" placeholder="Wins" id="away_singles_wins_4" readonly>
-                                <input type="number" class="grid_input" placeholder="Wins" id="away_singles_wins_5" readonly>
-                                <input type="number" class="grid_input" placeholder="Wins" id="away_singles_wins_6" readonly>
-                            </div> -->
-                        </div>
-                        
-                    </div>
-    
-    
-    
-                    <div>
-                        <div class="title">Doubles</div>
-    
-                        <div class="game_grid">
-                            <div class="input_groups">
-                                <div>
-                                    <input type="text" class="grid_input" placeholder="Player Name" id="home_doubles_player_name_1" list="namesList" required> 
-                                    <input type="text" class="grid_input" placeholder="Player Name" id="home_doubles_player_name_2" list="namesList" required> 
-                                </div>
+            <div class="scoresheet">
 
-                                <div>
-                                    <input type="text" class="grid_input" placeholder="Player Name" id="home_doubles_player_name_3" list="namesList" required> 
-                                    <input type="text" class="grid_input" placeholder="Player Name" id="home_doubles_player_name_4" list="namesList" required>  
-                                </div>
+                <h1>Match scoresheet entry</h1>
 
-                                <div>
-                                    <input type="text" class="grid_input" placeholder="Player Name" id="home_doubles_player_name_5" list="namesList" required> 
-                                    <input type="text" class="grid_input" placeholder="Player Name" id="home_doubles_player_name_6" list="namesList" required> 
-                                </div>
-                            </div>
-                            
-                            <div class="input_groups">
-                                <div>
-                                    <input type="number" min="0" class="grid_input" placeholder="Pegs" id="home_doubles_pegs_1">
-                                    <input type="number" min="0" class="grid_input" placeholder="Pegs" id="home_doubles_pegs_2">
-                                </div>
-
-                                <div>
-                                    <input type="number" min="0" class="grid_input" placeholder="Pegs" id="home_doubles_pegs_3">
-                                    <input type="number" min="0" class="grid_input" placeholder="Pegs" id="home_doubles_pegs_4">
-                                </div>
-
-                                <div>
-                                    <input type="number" min="0" class="grid_input" placeholder="Pegs" id="home_doubles_pegs_5">
-                                    <input type="number" min="0" class="grid_input" placeholder="Pegs" id="home_doubles_pegs_6">
-                                </div>
-                            </div>
-    
-                            <!-- <div class="win_counter_container">
-                                <input type="number" class="grid_input win_counter" placeholder="Wins" readonly>
-                                <input type="number" class="grid_input win_counter" placeholder="Wins" readonly>
-                                <input type="number" class="grid_input win_counter" placeholder="Wins" readonly>
-                            </div> -->
-    
-                            <div class="input_groups">
-                                <div>
-                                    <input type="text" class="grid_input" placeholder="Player Name" id="away_doubles_player_name_1" list="namesList" required> 
-                                    <input type="text" class="grid_input" placeholder="Player Name" id="away_doubles_player_name_2" list="namesList" required> 
-                                </div>
-
-                                <div>
-                                    <input type="text" class="grid_input" placeholder="Player Name" id="away_doubles_player_name_3" list="namesList" required> 
-                                    <input type="text" class="grid_input" placeholder="Player Name" id="away_doubles_player_name_4" list="namesList" required> 
-                                </div>
-
-                                <div>
-                                    <input type="text" class="grid_input" placeholder="Player Name" id="away_doubles_player_name_5" list="namesList" required> 
-                                    <input type="text" class="grid_input" placeholder="Player Name" id="away_doubles_player_name_6" list="namesList" required> 
-                                </div>
-                            </div>
-                            
-                            <div class="input_groups">
-                                <div>
-                                    <input type="number" min="0" class="grid_input" placeholder="Pegs" id="away_doubles_pegs_1">
-                                    <input type="number" min="0" class="grid_input" placeholder="Pegs" id="away_doubles_pegs_2">
-                                </div>
-
-                                <div>
-                                    <input type="number" min="0" class="grid_input" placeholder="Pegs" id="away_doubles_pegs_3">
-                                    <input type="number" min="0" class="grid_input" placeholder="Pegs" id="away_doubles_pegs_4">
-                                </div>
-
-                                <div>
-                                    <input type="number" min="0" class="grid_input" placeholder="Pegs" id="away_doubles_pegs_5">
-                                    <input type="number" min="0" class="grid_input" placeholder="Pegs" id="away_doubles_pegs_6">
-                                </div>
-                            </div>
-    
-                            <!-- <div class="win_counter_container">
-                                <input type="number" class="grid_input win_counter" placeholder="Wins" readonly>
-                                <input type="number" class="grid_input win_counter" placeholder="Wins" readonly>
-                                <input type="number" class="grid_input win_counter" placeholder="Wins" readonly>
-                            </div> -->
-                        </div>
-                        
-                    </div>
-    
-    
-    
-                    <div>
-                        <div class="title">Triples</div>
-    
-                        <div class="game_grid">
-                            <div class="input_groups">
-                                <div>
-                                    <input type="text" class="grid_input" placeholder="Player Name" id="home_triples_player_name_1" list="namesList" required> 
-                                    <input type="text" class="grid_input" placeholder="Player Name" id="home_triples_player_name_2" list="namesList" required> 
-                                    <input type="text" class="grid_input" placeholder="Player Name" id="home_triples_player_name_3" list="namesList" required> 
-                                </div>
-
-                                <div>
-                                    <input type="text" class="grid_input" placeholder="Player Name" id="home_triples_player_name_4" list="namesList" required> 
-                                    <input type="text" class="grid_input" placeholder="Player Name" id="home_triples_player_name_5" list="namesList" required> 
-                                    <input type="text" class="grid_input" placeholder="Player Name" id="home_triples_player_name_6" list="namesList" required> 
-                                </div>
-                            </div>
-                            
-                            <div class="input_groups">
-                                <div>
-                                    <input type="number" min="0" class="grid_input" placeholder="Pegs" id="home_triples_pegs_1">
-                                    <input type="number" min="0" class="grid_input" placeholder="Pegs" id="home_triples_pegs_2">
-                                    <input type="number" min="0" class="grid_input" placeholder="Pegs" id="home_triples_pegs_3">
-                                </div>
-
-                                <div>
-                                    <input type="number" min="0" class="grid_input" placeholder="Pegs" id="home_triples_pegs_4">
-                                    <input type="number" min="0" class="grid_input" placeholder="Pegs" id="home_triples_pegs_5">
-                                    <input type="number" min="0" class="grid_input" placeholder="Pegs" id="home_triples_pegs_6">
-                                </div>
-                            </div>
-    
-                            <!-- <div class="win_counter_container">
-                                <input type="number" class="grid_input win_counter" placeholder="Wins" readonly>
-                                <input type="number" class="grid_input win_counter" placeholder="Wins" readonly>
-                            </div> -->
-    
-                            <div class="input_groups">
-                                <div>
-                                    <input type="text" class="grid_input" placeholder="Player Name" id="away_triples_player_name_1" list="namesList" required> 
-                                    <input type="text" class="grid_input" placeholder="Player Name" id="away_triples_player_name_2" list="namesList" required> 
-                                    <input type="text" class="grid_input" placeholder="Player Name" id="away_triples_player_name_3" list="namesList" required> 
-                                </div>
-
-                                <div>
-                                    <input type="text" class="grid_input" placeholder="Player Name" id="away_triples_player_name_4" list="namesList" required> 
-                                    <input type="text" class="grid_input" placeholder="Player Name" id="away_triples_player_name_5" list="namesList" required> 
-                                    <input type="text" class="grid_input" placeholder="Player Name" id="away_triples_player_name_6" list="namesList" required> 
-                                </div>
-                            </div>
-                            
-                            <div class="input_groups">
-                                <div>
-                                    <input type="number" min="0" class="grid_input" placeholder="Pegs" id="away_triples_pegs_1">
-                                    <input type="number" min="0" class="grid_input" placeholder="Pegs" id="away_triples_pegs_2">
-                                    <input type="number" min="0" class="grid_input" placeholder="Pegs" id="away_triples_pegs_3">
-                                </div>
-
-                                <div>
-                                    <input type="number" min="0" class="grid_input" placeholder="Pegs" id="away_triples_pegs_4">
-                                    <input type="number" min="0" class="grid_input" placeholder="Pegs" id="away_triples_pegs_5">
-                                    <input type="number" min="0" class="grid_input" placeholder="Pegs" id="away_triples_pegs_6">
-                                </div>
-                            </div>
-    
-                            <!-- <div class="win_counter_container">
-                                <input type="number" class="grid_input win_counter" placeholder="Wins" readonly>
-                                <input type="number" class="grid_input win_counter" placeholder="Wins" readonly>
-                            </div> -->
-                        </div>
-                        
-                    </div>
-    
-    
-    
-                    <div>
-                        <div class="game_results">
-                            <div>
-                                <!-- <div class="title" id="home_results_legs">Legs: 0</div> -->
-                                <div class="title" id="home_results_games">Games: 0</div>
-                            </div>
-    
-                            <div>
-                                <!-- <div class="title" id="away_results_legs">Legs: 0</div> -->
-                                <div class="title" id="away_results_games">Games: 0</div>
-                            </div>
-                        </div>
-    
-                        <div class="title winner_team_name" id="game_winner_name">Winner: none</div>
-                    </div>
-    
-    
-    
-                    <div>
-                        <div class="title" id="home_name_playerstats">----------</div>
-    
-                        <div class="ton_grid_container" id="home_playerstats_container">
-                            <div class="ton_grid">
-                                <div class="flex_vert_centre" id="home_playerstats_player_name_1">----------</div>
-                                <input type="text" class="grid_input" placeholder="Tons example: 100 125 100 100" id="home_playerstats_tons_input_1">
-                                <input type="text" class="grid_input" placeholder="High peg example: 75 92 100 75" id="home_playerstats_pegs_input_1">
-                                <div class="flex_centre" id="home_playerstats_pegs_1">Pegs: 0</div>
-                            </div>
-    
-                            <div class="ton_grid">
-                                <div class="flex_vert_centre" id="home_playerstats_player_name_2">----------</div>
-                                <input type="text" class="grid_input" placeholder="Tons example: 100 125 100 100" id="home_playerstats_tons_input_2">
-                                <input type="text" class="grid_input" placeholder="High peg example: 75 92 100 75" id="home_playerstats_pegs_input_2">
-                                <div class="flex_centre" id="home_playerstats_pegs_2">Pegs: 0</div>
-                            </div>
-            
-                            <div class="ton_grid">
-                                <div class="flex_vert_centre" id="home_playerstats_player_name_3">----------</div>
-                                <input type="text" class="grid_input" placeholder="Tons example: 100 125 100 100" id="home_playerstats_tons_input_3">
-                                <input type="text" class="grid_input" placeholder="High peg example: 75 92 100 75" id="home_playerstats_pegs_input_3">
-                                <div class="flex_centre" id="home_playerstats_pegs_3">Pegs: 0</div>
-                            </div>
-            
-                            <div class="ton_grid">
-                                <div class="flex_vert_centre" id="home_playerstats_player_name_4">----------</div>
-                                <input type="text" class="grid_input" placeholder="Tons example: 100 125 100 100" id="home_playerstats_tons_input_4">
-                                <input type="text" class="grid_input" placeholder="High peg example: 75 92 100 75" id="home_playerstats_pegs_input_4">
-                                <div class="flex_centre" id="home_playerstats_pegs_4">Pegs: 0</div>
-                            </div>
-            
-                            <div class="ton_grid">
-                                <div class="flex_vert_centre" id="home_playerstats_player_name_5">----------</div>
-                                <input type="text" class="grid_input" placeholder="Tons example: 100 125 100 100" id="home_playerstats_tons_input_5">
-                                <input type="text" class="grid_input" placeholder="High peg example: 75 92 100 75" id="home_playerstats_pegs_input_5">
-                                <div class="flex_centre" id="home_playerstats_pegs_5">Pegs: 0</div>
-                            </div>
-            
-                            <div class="ton_grid">
-                                <div class="flex_vert_centre" id="home_playerstats_player_name_6">----------</div>
-                                <input type="text" class="grid_input" placeholder="Tons example: 100 125 100 100" id="home_playerstats_tons_input_6">
-                                <input type="text" class="grid_input" placeholder="High peg example: 75 92 100 75" id="home_playerstats_pegs_input_6">
-                                <div class="flex_centre" id="home_playerstats_pegs_6">Pegs: 0</div>
-                            </div>
-            
-                            <div class="ton_grid">
-                                <div class="flex_vert_centre" id="home_playerstats_player_name_7">----------</div>
-                                <input type="text" class="grid_input" placeholder="Tons example: 100 125 100 100" id="home_playerstats_tons_input_7">
-                                <input type="text" class="grid_input" placeholder="High peg example: 75 92 100 75" id="home_playerstats_pegs_input_7">
-                                <div class="flex_centre" id="home_playerstats_pegs_7">Pegs: 0</div>
-                            </div>
-
-                            <div class="ton_grid">
-                                <div class="flex_vert_centre" id="home_playerstats_player_name_8">----------</div>
-                                <input type="text" class="grid_input" placeholder="Tons example: 100 125 100 100" id="home_playerstats_tons_input_8">
-                                <input type="text" class="grid_input" placeholder="High peg example: 75 92 100 75" id="home_playerstats_pegs_input_8">
-                                <div class="flex_centre" id="home_playerstats_pegs_8">Pegs: 0</div>
-                            </div>
-                        </div>
-    
-                    </div>
-    
-    
-    
-                    <div class="flex_basic">
-                        <div class="flex_basic_item">
-                            <div>High pegs (75+):</div>
-                            <div>Player name: 0</div>
-                        </div>
-    
-                        <div class="flex_basic_item">
-                            <div>180's</div>
-                            <div>Player name: 0</div>
-                        </div>
-                    </div>
-    
-    
-    
-                    <div>
-                        <div class="title" id="away_name_playerstats">----------</div>
-    
-                        <div class="ton_grid_container">
-                            <div class="ton_grid">
-                                <div class="flex_vert_centre" id="away_playerstats_player_name_1">----------</div>
-                                <input type="text" class="grid_input" placeholder="Tons example: 100 125 100 100" id="away_playerstats_tons_input_1">
-                                <input type="text" class="grid_input" placeholder="High peg example: 75 92 100 75" id="away_playerstats_pegs_input_1">
-                                <div class="flex_centre" id="away_playerstats_pegs_1">Pegs: 0</div>
-                            </div>
-    
-                            <div class="ton_grid">
-                                <div class="flex_vert_centre" id="away_playerstats_player_name_2">----------</div>
-                                <input type="text" class="grid_input" placeholder="Tons example: 100 125 100 100" id="away_playerstats_tons_input_2">
-                                <input type="text" class="grid_input" placeholder="High peg example: 75 92 100 75" id="away_playerstats_pegs_input_2">
-                                <div class="flex_centre" id="away_playerstats_pegs_2">Pegs: 0</div>
-                            </div>
-            
-                            <div class="ton_grid">
-                                <div class="flex_vert_centre" id="away_playerstats_player_name_3">----------</div>
-                                <input type="text" class="grid_input" placeholder="Tons example: 100 125 100 100" id="away_playerstats_tons_input_3">
-                                <input type="text" class="grid_input" placeholder="High peg example: 75 92 100 75" id="away_playerstats_pegs_input_3">
-                                <div class="flex_centre" id="away_playerstats_pegs_3">Pegs: 0</div>
-                            </div>
-            
-                            <div class="ton_grid">
-                                <div class="flex_vert_centre" id="away_playerstats_player_name_4">----------</div>
-                                <input type="text" class="grid_input" placeholder="Tons example: 100 125 100 100" id="away_playerstats_tons_input_4">
-                                <input type="text" class="grid_input" placeholder="High peg example: 75 92 100 75" id="away_playerstats_pegs_input_4">
-                                <div class="flex_centre" id="away_playerstats_pegs_4">Pegs: 0</div>
-                            </div>
-            
-                            <div class="ton_grid">
-                                <div class="flex_vert_centre" id="away_playerstats_player_name_5">----------</div>
-                                <input type="text" class="grid_input" placeholder="Tons example: 100 125 100 100" id="away_playerstats_tons_input_5">
-                                <input type="text" class="grid_input" placeholder="High peg example: 75 92 100 75" id="away_playerstats_pegs_input_5">
-                                <div class="flex_centre" id="away_playerstats_pegs_5">Pegs: 0</div>
-                            </div>
-            
-                            <div class="ton_grid">
-                                <div class="flex_vert_centre" id="away_playerstats_player_name_6">----------</div>
-                                <input type="text" class="grid_input" placeholder="Tons example: 100 125 100 100" id="away_playerstats_tons_input_6">
-                                <input type="text" class="grid_input" placeholder="High peg example: 75 92 100 75" id="away_playerstats_pegs_input_6">
-                                <div class="flex_centre" id="away_playerstats_pegs_6">Pegs: 0</div>
-                            </div>
-            
-                            <div class="ton_grid">
-                                <div class="flex_vert_centre" id="away_playerstats_player_name_7">----------</div>
-                                <input type="text" class="grid_input" placeholder="Tons example: 100 125 100 100" id="away_playerstats_tons_input_7">
-                                <input type="text" class="grid_input" placeholder="High peg example: 75 92 100 75" id="away_playerstats_pegs_input_7">
-                                <div class="flex_centre" id="away_playerstats_pegs_7">Pegs: 0</div>
-                            </div>
-
-                            <div class="ton_grid">
-                                <div class="flex_vert_centre" id="away_playerstats_player_name_8">----------</div>
-                                <input type="text" class="grid_input" placeholder="Tons example: 100 125 100 100" id="away_playerstats_tons_input_8">
-                                <input type="text" class="grid_input" placeholder="High peg example: 75 92 100 75" id="away_playerstats_pegs_input_8">
-                                <div class="flex_centre" id="away_playerstats_pegs_8">Pegs: 0</div>
-                            </div>
-                        </div>
-    
-                    </div>
-    
-    
-    
-                    <div class="flex_basic">
-                        <div class="flex_basic_item">
-                            <div>High pegs (75+):</div>
-                            <div>Player name: 0</div>
-                        </div>
-    
-                        <div class="flex_basic_item">
-                            <div>180's</div>
-                            <div>Player name: 0</div>
-                        </div>
-                    </div>
-    
-    
-    
-                    <div>
-                        <div class="score_entry_submit">
-                            <button class="score_entry_submit_button" id="uploadDataBtn">Upload data</button>
-                        </div>
-                    </div>
-    
+                <section id="whenSignedOut">
+                    <button class="sign_in_button" id="signInBtn">Sign In With Google</button>
                 </section>
 
+                <form id="scoresheet_form">
+                    <section id="whenSignedIn">
+                        <div>
+                            <div id="userDetails"></div>
+                            <button class="sign_out_button" id="signOutBtn">Sign Out</button>
+                        </div>
+                        
+                        
+        
+                        <div class="match_date_input_container">
+                            <div class="title">Match date</div>
+                            <input type="date" class="match_date_input" id="match_creation_date" required>
+                            <!-- <input type="text" class="match_date_input"> -->
+                        </div>
+        
+        
+        
+                        <div class="team_name_input_container">
+                            <div>
+                                <div class="title">Home</div>
+                                <input type="text" class="team_name_input" id="home_team_name" required>
+                            </div>
+        
+                            <div>
+                                <div class="title">Away</div>
+                                <input type="text" class="team_name_input" id="away_team_name" required>
+                            </div>
+                        </div>
+        
+                        
+        
+                        <div>
+                            <div class="title">Singles</div>
+        
+                            <div class="game_grid">
+                                <div>
+                                    <input type="text" class="grid_input" placeholder="Player Name" id="home_singles_player_name_1" list="namesList" required> 
+                                    <input type="text" class="grid_input" placeholder="Player Name" id="home_singles_player_name_2" list="namesList" required> 
+                                    <input type="text" class="grid_input" placeholder="Player Name" id="home_singles_player_name_3" list="namesList" required> 
+                                    <input type="text" class="grid_input" placeholder="Player Name" id="home_singles_player_name_4" list="namesList" required> 
+                                    <input type="text" class="grid_input" placeholder="Player Name" id="home_singles_player_name_5" list="namesList" required> 
+                                    <input type="text" class="grid_input" placeholder="Player Name" id="home_singles_player_name_6" list="namesList" required> 
+                                </div>
+                                
+                                <div>
+                                    <input type="number" min="0" class="grid_input" placeholder="Pegs" id="home_singles_pegs_1">
+                                    <input type="number" min="0" class="grid_input" placeholder="Pegs" id="home_singles_pegs_2">
+                                    <input type="number" min="0" class="grid_input" placeholder="Pegs" id="home_singles_pegs_3">
+                                    <input type="number" min="0" class="grid_input" placeholder="Pegs" id="home_singles_pegs_4">
+                                    <input type="number" min="0" class="grid_input" placeholder="Pegs" id="home_singles_pegs_5">
+                                    <input type="number" min="0" class="grid_input" placeholder="Pegs" id="home_singles_pegs_6">
+                                </div>
+        
+                                <!-- <div>
+                                    <input type="number" class="grid_input" placeholder="Wins" id="home_singles_wins_1" readonly>
+                                    <input type="number" class="grid_input" placeholder="Wins" id="home_singles_wins_2" readonly>
+                                    <input type="number" class="grid_input" placeholder="Wins" id="home_singles_wins_3" readonly>
+                                    <input type="number" class="grid_input" placeholder="Wins" id="home_singles_wins_4" readonly>
+                                    <input type="number" class="grid_input" placeholder="Wins" id="home_singles_wins_5" readonly>
+                                    <input type="number" class="grid_input" placeholder="Wins" id="home_singles_wins_6" readonly>
+                                </div> -->
+        
+                                <div>
+                                    <input type="text" class="grid_input" placeholder="Player Name" id="away_singles_player_name_1" list="namesList" required>
+                                    <input type="text" class="grid_input" placeholder="Player Name" id="away_singles_player_name_2" list="namesList" required>
+                                    <input type="text" class="grid_input" placeholder="Player Name" id="away_singles_player_name_3" list="namesList" required>
+                                    <input type="text" class="grid_input" placeholder="Player Name" id="away_singles_player_name_4" list="namesList" required>
+                                    <input type="text" class="grid_input" placeholder="Player Name" id="away_singles_player_name_5" list="namesList" required>
+                                    <input type="text" class="grid_input" placeholder="Player Name" id="away_singles_player_name_6" list="namesList" required>
+                                </div>
+                                
+                                <div>
+                                    <input type="number" min="0" class="grid_input" placeholder="Pegs" id="away_singles_pegs_1">
+                                    <input type="number" min="0" class="grid_input" placeholder="Pegs" id="away_singles_pegs_2">
+                                    <input type="number" min="0" class="grid_input" placeholder="Pegs" id="away_singles_pegs_3">
+                                    <input type="number" min="0" class="grid_input" placeholder="Pegs" id="away_singles_pegs_4">
+                                    <input type="number" min="0" class="grid_input" placeholder="Pegs" id="away_singles_pegs_5">
+                                    <input type="number" min="0" class="grid_input" placeholder="Pegs" id="away_singles_pegs_6">
+                                </div>
+        
+                                <!-- <div>
+                                    <input type="number" class="grid_input" placeholder="Wins" id="away_singles_wins_1" readonly>
+                                    <input type="number" class="grid_input" placeholder="Wins" id="away_singles_wins_2" readonly>
+                                    <input type="number" class="grid_input" placeholder="Wins" id="away_singles_wins_3" readonly>
+                                    <input type="number" class="grid_input" placeholder="Wins" id="away_singles_wins_4" readonly>
+                                    <input type="number" class="grid_input" placeholder="Wins" id="away_singles_wins_5" readonly>
+                                    <input type="number" class="grid_input" placeholder="Wins" id="away_singles_wins_6" readonly>
+                                </div> -->
+                            </div>
+                            
+                        </div>
+        
+        
+        
+                        <div>
+                            <div class="title">Doubles</div>
+        
+                            <div class="game_grid">
+                                <div class="input_groups">
+                                    <div>
+                                        <input type="text" class="grid_input" placeholder="Player Name" id="home_doubles_player_name_1" list="namesList" required> 
+                                        <input type="text" class="grid_input" placeholder="Player Name" id="home_doubles_player_name_2" list="namesList" required> 
+                                    </div>
 
-            </form>
-            
+                                    <div>
+                                        <input type="text" class="grid_input" placeholder="Player Name" id="home_doubles_player_name_3" list="namesList" required> 
+                                        <input type="text" class="grid_input" placeholder="Player Name" id="home_doubles_player_name_4" list="namesList" required>  
+                                    </div>
 
-        </div>
+                                    <div>
+                                        <input type="text" class="grid_input" placeholder="Player Name" id="home_doubles_player_name_5" list="namesList" required> 
+                                        <input type="text" class="grid_input" placeholder="Player Name" id="home_doubles_player_name_6" list="namesList" required> 
+                                    </div>
+                                </div>
+                                
+                                <div class="input_groups">
+                                    <div>
+                                        <input type="number" min="0" class="grid_input" placeholder="Pegs" id="home_doubles_pegs_1">
+                                        <input type="number" min="0" class="grid_input" placeholder="Pegs" id="home_doubles_pegs_2">
+                                    </div>
+
+                                    <div>
+                                        <input type="number" min="0" class="grid_input" placeholder="Pegs" id="home_doubles_pegs_3">
+                                        <input type="number" min="0" class="grid_input" placeholder="Pegs" id="home_doubles_pegs_4">
+                                    </div>
+
+                                    <div>
+                                        <input type="number" min="0" class="grid_input" placeholder="Pegs" id="home_doubles_pegs_5">
+                                        <input type="number" min="0" class="grid_input" placeholder="Pegs" id="home_doubles_pegs_6">
+                                    </div>
+                                </div>
+        
+                                <!-- <div class="win_counter_container">
+                                    <input type="number" class="grid_input win_counter" placeholder="Wins" readonly>
+                                    <input type="number" class="grid_input win_counter" placeholder="Wins" readonly>
+                                    <input type="number" class="grid_input win_counter" placeholder="Wins" readonly>
+                                </div> -->
+        
+                                <div class="input_groups">
+                                    <div>
+                                        <input type="text" class="grid_input" placeholder="Player Name" id="away_doubles_player_name_1" list="namesList" required> 
+                                        <input type="text" class="grid_input" placeholder="Player Name" id="away_doubles_player_name_2" list="namesList" required> 
+                                    </div>
+
+                                    <div>
+                                        <input type="text" class="grid_input" placeholder="Player Name" id="away_doubles_player_name_3" list="namesList" required> 
+                                        <input type="text" class="grid_input" placeholder="Player Name" id="away_doubles_player_name_4" list="namesList" required> 
+                                    </div>
+
+                                    <div>
+                                        <input type="text" class="grid_input" placeholder="Player Name" id="away_doubles_player_name_5" list="namesList" required> 
+                                        <input type="text" class="grid_input" placeholder="Player Name" id="away_doubles_player_name_6" list="namesList" required> 
+                                    </div>
+                                </div>
+                                
+                                <div class="input_groups">
+                                    <div>
+                                        <input type="number" min="0" class="grid_input" placeholder="Pegs" id="away_doubles_pegs_1">
+                                        <input type="number" min="0" class="grid_input" placeholder="Pegs" id="away_doubles_pegs_2">
+                                    </div>
+
+                                    <div>
+                                        <input type="number" min="0" class="grid_input" placeholder="Pegs" id="away_doubles_pegs_3">
+                                        <input type="number" min="0" class="grid_input" placeholder="Pegs" id="away_doubles_pegs_4">
+                                    </div>
+
+                                    <div>
+                                        <input type="number" min="0" class="grid_input" placeholder="Pegs" id="away_doubles_pegs_5">
+                                        <input type="number" min="0" class="grid_input" placeholder="Pegs" id="away_doubles_pegs_6">
+                                    </div>
+                                </div>
+        
+                                <!-- <div class="win_counter_container">
+                                    <input type="number" class="grid_input win_counter" placeholder="Wins" readonly>
+                                    <input type="number" class="grid_input win_counter" placeholder="Wins" readonly>
+                                    <input type="number" class="grid_input win_counter" placeholder="Wins" readonly>
+                                </div> -->
+                            </div>
+                            
+                        </div>
+        
+        
+        
+                        <div>
+                            <div class="title">Triples</div>
+        
+                            <div class="game_grid">
+                                <div class="input_groups">
+                                    <div>
+                                        <input type="text" class="grid_input" placeholder="Player Name" id="home_triples_player_name_1" list="namesList" required> 
+                                        <input type="text" class="grid_input" placeholder="Player Name" id="home_triples_player_name_2" list="namesList" required> 
+                                        <input type="text" class="grid_input" placeholder="Player Name" id="home_triples_player_name_3" list="namesList" required> 
+                                    </div>
+
+                                    <div>
+                                        <input type="text" class="grid_input" placeholder="Player Name" id="home_triples_player_name_4" list="namesList" required> 
+                                        <input type="text" class="grid_input" placeholder="Player Name" id="home_triples_player_name_5" list="namesList" required> 
+                                        <input type="text" class="grid_input" placeholder="Player Name" id="home_triples_player_name_6" list="namesList" required> 
+                                    </div>
+                                </div>
+                                
+                                <div class="input_groups">
+                                    <div>
+                                        <input type="number" min="0" class="grid_input" placeholder="Pegs" id="home_triples_pegs_1">
+                                        <input type="number" min="0" class="grid_input" placeholder="Pegs" id="home_triples_pegs_2">
+                                        <input type="number" min="0" class="grid_input" placeholder="Pegs" id="home_triples_pegs_3">
+                                    </div>
+
+                                    <div>
+                                        <input type="number" min="0" class="grid_input" placeholder="Pegs" id="home_triples_pegs_4">
+                                        <input type="number" min="0" class="grid_input" placeholder="Pegs" id="home_triples_pegs_5">
+                                        <input type="number" min="0" class="grid_input" placeholder="Pegs" id="home_triples_pegs_6">
+                                    </div>
+                                </div>
+        
+                                <!-- <div class="win_counter_container">
+                                    <input type="number" class="grid_input win_counter" placeholder="Wins" readonly>
+                                    <input type="number" class="grid_input win_counter" placeholder="Wins" readonly>
+                                </div> -->
+        
+                                <div class="input_groups">
+                                    <div>
+                                        <input type="text" class="grid_input" placeholder="Player Name" id="away_triples_player_name_1" list="namesList" required> 
+                                        <input type="text" class="grid_input" placeholder="Player Name" id="away_triples_player_name_2" list="namesList" required> 
+                                        <input type="text" class="grid_input" placeholder="Player Name" id="away_triples_player_name_3" list="namesList" required> 
+                                    </div>
+
+                                    <div>
+                                        <input type="text" class="grid_input" placeholder="Player Name" id="away_triples_player_name_4" list="namesList" required> 
+                                        <input type="text" class="grid_input" placeholder="Player Name" id="away_triples_player_name_5" list="namesList" required> 
+                                        <input type="text" class="grid_input" placeholder="Player Name" id="away_triples_player_name_6" list="namesList" required> 
+                                    </div>
+                                </div>
+                                
+                                <div class="input_groups">
+                                    <div>
+                                        <input type="number" min="0" class="grid_input" placeholder="Pegs" id="away_triples_pegs_1">
+                                        <input type="number" min="0" class="grid_input" placeholder="Pegs" id="away_triples_pegs_2">
+                                        <input type="number" min="0" class="grid_input" placeholder="Pegs" id="away_triples_pegs_3">
+                                    </div>
+
+                                    <div>
+                                        <input type="number" min="0" class="grid_input" placeholder="Pegs" id="away_triples_pegs_4">
+                                        <input type="number" min="0" class="grid_input" placeholder="Pegs" id="away_triples_pegs_5">
+                                        <input type="number" min="0" class="grid_input" placeholder="Pegs" id="away_triples_pegs_6">
+                                    </div>
+                                </div>
+        
+                                <!-- <div class="win_counter_container">
+                                    <input type="number" class="grid_input win_counter" placeholder="Wins" readonly>
+                                    <input type="number" class="grid_input win_counter" placeholder="Wins" readonly>
+                                </div> -->
+                            </div>
+                            
+                        </div>
+        
+        
+        
+                        <div>
+                            <div class="game_results">
+                                <div>
+                                    <!-- <div class="title" id="home_results_legs">Legs: 0</div> -->
+                                    <div class="title" id="home_results_games">Games: 0</div>
+                                </div>
+        
+                                <div>
+                                    <!-- <div class="title" id="away_results_legs">Legs: 0</div> -->
+                                    <div class="title" id="away_results_games">Games: 0</div>
+                                </div>
+                            </div>
+        
+                            <div class="title winner_team_name" id="game_winner_name">Winner: none</div>
+                        </div>
+        
+        
+        
+                        <div>
+                            <div class="title" id="home_name_playerstats">----------</div>
+        
+                            <div class="ton_grid_container" id="home_playerstats_container">
+                                <div class="ton_grid">
+                                    <div class="flex_vert_centre" id="home_playerstats_player_name_1">----------</div>
+                                    <input type="text" class="grid_input" placeholder="Tons example: 100 125 100 100" id="home_playerstats_tons_input_1">
+                                    <input type="text" class="grid_input" placeholder="High peg example: 75 92 100 75" id="home_playerstats_pegs_input_1">
+                                    <div class="flex_centre" id="home_playerstats_pegs_1">Pegs: 0</div>
+                                </div>
+        
+                                <div class="ton_grid">
+                                    <div class="flex_vert_centre" id="home_playerstats_player_name_2">----------</div>
+                                    <input type="text" class="grid_input" placeholder="Tons example: 100 125 100 100" id="home_playerstats_tons_input_2">
+                                    <input type="text" class="grid_input" placeholder="High peg example: 75 92 100 75" id="home_playerstats_pegs_input_2">
+                                    <div class="flex_centre" id="home_playerstats_pegs_2">Pegs: 0</div>
+                                </div>
+                
+                                <div class="ton_grid">
+                                    <div class="flex_vert_centre" id="home_playerstats_player_name_3">----------</div>
+                                    <input type="text" class="grid_input" placeholder="Tons example: 100 125 100 100" id="home_playerstats_tons_input_3">
+                                    <input type="text" class="grid_input" placeholder="High peg example: 75 92 100 75" id="home_playerstats_pegs_input_3">
+                                    <div class="flex_centre" id="home_playerstats_pegs_3">Pegs: 0</div>
+                                </div>
+                
+                                <div class="ton_grid">
+                                    <div class="flex_vert_centre" id="home_playerstats_player_name_4">----------</div>
+                                    <input type="text" class="grid_input" placeholder="Tons example: 100 125 100 100" id="home_playerstats_tons_input_4">
+                                    <input type="text" class="grid_input" placeholder="High peg example: 75 92 100 75" id="home_playerstats_pegs_input_4">
+                                    <div class="flex_centre" id="home_playerstats_pegs_4">Pegs: 0</div>
+                                </div>
+                
+                                <div class="ton_grid">
+                                    <div class="flex_vert_centre" id="home_playerstats_player_name_5">----------</div>
+                                    <input type="text" class="grid_input" placeholder="Tons example: 100 125 100 100" id="home_playerstats_tons_input_5">
+                                    <input type="text" class="grid_input" placeholder="High peg example: 75 92 100 75" id="home_playerstats_pegs_input_5">
+                                    <div class="flex_centre" id="home_playerstats_pegs_5">Pegs: 0</div>
+                                </div>
+                
+                                <div class="ton_grid">
+                                    <div class="flex_vert_centre" id="home_playerstats_player_name_6">----------</div>
+                                    <input type="text" class="grid_input" placeholder="Tons example: 100 125 100 100" id="home_playerstats_tons_input_6">
+                                    <input type="text" class="grid_input" placeholder="High peg example: 75 92 100 75" id="home_playerstats_pegs_input_6">
+                                    <div class="flex_centre" id="home_playerstats_pegs_6">Pegs: 0</div>
+                                </div>
+                
+                                <div class="ton_grid">
+                                    <div class="flex_vert_centre" id="home_playerstats_player_name_7">----------</div>
+                                    <input type="text" class="grid_input" placeholder="Tons example: 100 125 100 100" id="home_playerstats_tons_input_7">
+                                    <input type="text" class="grid_input" placeholder="High peg example: 75 92 100 75" id="home_playerstats_pegs_input_7">
+                                    <div class="flex_centre" id="home_playerstats_pegs_7">Pegs: 0</div>
+                                </div>
+
+                                <div class="ton_grid">
+                                    <div class="flex_vert_centre" id="home_playerstats_player_name_8">----------</div>
+                                    <input type="text" class="grid_input" placeholder="Tons example: 100 125 100 100" id="home_playerstats_tons_input_8">
+                                    <input type="text" class="grid_input" placeholder="High peg example: 75 92 100 75" id="home_playerstats_pegs_input_8">
+                                    <div class="flex_centre" id="home_playerstats_pegs_8">Pegs: 0</div>
+                                </div>
+                            </div>
+        
+                        </div>
+        
+        
+        
+                        <div class="flex_basic">
+                            <div class="flex_basic_item">
+                                <div>High pegs (75+):</div>
+                                <div>Player name: 0</div>
+                            </div>
+        
+                            <div class="flex_basic_item">
+                                <div>180's</div>
+                                <div>Player name: 0</div>
+                            </div>
+                        </div>
+        
+        
+        
+                        <div>
+                            <div class="title" id="away_name_playerstats">----------</div>
+        
+                            <div class="ton_grid_container">
+                                <div class="ton_grid">
+                                    <div class="flex_vert_centre" id="away_playerstats_player_name_1">----------</div>
+                                    <input type="text" class="grid_input" placeholder="Tons example: 100 125 100 100" id="away_playerstats_tons_input_1">
+                                    <input type="text" class="grid_input" placeholder="High peg example: 75 92 100 75" id="away_playerstats_pegs_input_1">
+                                    <div class="flex_centre" id="away_playerstats_pegs_1">Pegs: 0</div>
+                                </div>
+        
+                                <div class="ton_grid">
+                                    <div class="flex_vert_centre" id="away_playerstats_player_name_2">----------</div>
+                                    <input type="text" class="grid_input" placeholder="Tons example: 100 125 100 100" id="away_playerstats_tons_input_2">
+                                    <input type="text" class="grid_input" placeholder="High peg example: 75 92 100 75" id="away_playerstats_pegs_input_2">
+                                    <div class="flex_centre" id="away_playerstats_pegs_2">Pegs: 0</div>
+                                </div>
+                
+                                <div class="ton_grid">
+                                    <div class="flex_vert_centre" id="away_playerstats_player_name_3">----------</div>
+                                    <input type="text" class="grid_input" placeholder="Tons example: 100 125 100 100" id="away_playerstats_tons_input_3">
+                                    <input type="text" class="grid_input" placeholder="High peg example: 75 92 100 75" id="away_playerstats_pegs_input_3">
+                                    <div class="flex_centre" id="away_playerstats_pegs_3">Pegs: 0</div>
+                                </div>
+                
+                                <div class="ton_grid">
+                                    <div class="flex_vert_centre" id="away_playerstats_player_name_4">----------</div>
+                                    <input type="text" class="grid_input" placeholder="Tons example: 100 125 100 100" id="away_playerstats_tons_input_4">
+                                    <input type="text" class="grid_input" placeholder="High peg example: 75 92 100 75" id="away_playerstats_pegs_input_4">
+                                    <div class="flex_centre" id="away_playerstats_pegs_4">Pegs: 0</div>
+                                </div>
+                
+                                <div class="ton_grid">
+                                    <div class="flex_vert_centre" id="away_playerstats_player_name_5">----------</div>
+                                    <input type="text" class="grid_input" placeholder="Tons example: 100 125 100 100" id="away_playerstats_tons_input_5">
+                                    <input type="text" class="grid_input" placeholder="High peg example: 75 92 100 75" id="away_playerstats_pegs_input_5">
+                                    <div class="flex_centre" id="away_playerstats_pegs_5">Pegs: 0</div>
+                                </div>
+                
+                                <div class="ton_grid">
+                                    <div class="flex_vert_centre" id="away_playerstats_player_name_6">----------</div>
+                                    <input type="text" class="grid_input" placeholder="Tons example: 100 125 100 100" id="away_playerstats_tons_input_6">
+                                    <input type="text" class="grid_input" placeholder="High peg example: 75 92 100 75" id="away_playerstats_pegs_input_6">
+                                    <div class="flex_centre" id="away_playerstats_pegs_6">Pegs: 0</div>
+                                </div>
+                
+                                <div class="ton_grid">
+                                    <div class="flex_vert_centre" id="away_playerstats_player_name_7">----------</div>
+                                    <input type="text" class="grid_input" placeholder="Tons example: 100 125 100 100" id="away_playerstats_tons_input_7">
+                                    <input type="text" class="grid_input" placeholder="High peg example: 75 92 100 75" id="away_playerstats_pegs_input_7">
+                                    <div class="flex_centre" id="away_playerstats_pegs_7">Pegs: 0</div>
+                                </div>
+
+                                <div class="ton_grid">
+                                    <div class="flex_vert_centre" id="away_playerstats_player_name_8">----------</div>
+                                    <input type="text" class="grid_input" placeholder="Tons example: 100 125 100 100" id="away_playerstats_tons_input_8">
+                                    <input type="text" class="grid_input" placeholder="High peg example: 75 92 100 75" id="away_playerstats_pegs_input_8">
+                                    <div class="flex_centre" id="away_playerstats_pegs_8">Pegs: 0</div>
+                                </div>
+                            </div>
+        
+                        </div>
+        
+        
+        
+                        <div class="flex_basic">
+                            <div class="flex_basic_item">
+                                <div>High pegs (75+):</div>
+                                <div>Player name: 0</div>
+                            </div>
+        
+                            <div class="flex_basic_item">
+                                <div>180's</div>
+                                <div>Player name: 0</div>
+                            </div>
+                        </div>
+        
+        
+        
+                        <div>
+                            <div class="score_entry_submit">
+                                <button class="score_entry_submit_button" id="uploadDataBtn">Upload data</button>
+                            </div>
+                        </div>
+        
+                    </section>
+
+
+                </form>
+                
+
+            </div>
 
 
 
 
 
-    </main>
+        </main>
 
-    <footer id="documentFooter"></footer>
-</body>
+        <footer id="documentFooter"></footer>
+    </body>
 </html>
