@@ -59,7 +59,7 @@ async function fixturesLink () {
 
 
 
-
+let statsLoaded = false;
 async function statsLink () {
     try {
         const getNewContent = await fetch('seasonstats.html');
@@ -69,5 +69,9 @@ async function statsLink () {
         console.error('Error loading content:', error);
     }
 
-    loadSeasonStats();
+    // make sure only to load the stats once per session
+    if (!statsLoaded) {
+        loadSeasonStats();
+        statsLoaded = true;
+    } else displayStats();
 }

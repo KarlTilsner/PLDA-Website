@@ -1,11 +1,8 @@
 document.addEventListener('DOMContentLoaded', async function() {
-
-    let contentFooter = document.getElementById('documentFooter');
-
     try {
-        // const HeaderResponse = await fetch('header.html');
-        // const HeaderContent = await HeaderResponse.text();
-        // document.getElementById('documentHeader').innerHTML = HeaderContent;
+        const HeaderResponse = await fetch('header.html');
+        const HeaderContent = await HeaderResponse.text();
+        document.getElementById('documentHeader').innerHTML = HeaderContent;
 
         const mainResponse = await fetch('home.html');
         const mainContent = await mainResponse.text();
@@ -13,7 +10,7 @@ document.addEventListener('DOMContentLoaded', async function() {
 
         const FooterResponse = await fetch('footer.html');
         const FooterContent = await FooterResponse.text();
-        contentFooter.innerHTML = FooterContent;
+        document.getElementById('documentFooter').innerHTML = FooterContent;
     } catch (error) {
         console.error('Error loading content:', error);
     }

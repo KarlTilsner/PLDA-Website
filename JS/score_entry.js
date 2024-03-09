@@ -744,6 +744,7 @@ async function getMatches() {
                 let tons = [];
                 let pegs_high = [];
                 let teams_played_in = [];
+
                 // [
                 //     {
                 //         name: "Dart Bods",
@@ -757,6 +758,7 @@ async function getMatches() {
                     tons: tons,
                     tons_count: 0,
                     pegs_high: pegs_high,
+                    peg_highest: 0,
                     pegs_count: 0,
 
                     total_wins: 0,
@@ -902,6 +904,10 @@ async function getMatches() {
                         });
                     });
 
+                    if (Math.max(...pegs_high) >= 75) {
+                        playerData.peg_highest = Math.max(...pegs_high);
+                        console.log(Math.max(...pegs_high));
+                    }
                 });
             
                 // add player data to firestore

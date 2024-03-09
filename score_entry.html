@@ -6,7 +6,6 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Port Lincoln Darts Association</title>
         <link rel="stylesheet" href="CSS/styles.css">
-        <script src="JS/onload.js"></script>
 
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -31,7 +30,24 @@
 
 
     <body>
-        <header id="documentHeader"></header>
+        <header id="documentHeader">
+            <div class="header_container"> 
+
+                <div class="header_logo_container">
+                    <img class="header_logo" src="Images/Logo_PLDA.png">
+                </div>
+            
+                <div class="nav_container">
+                    <div class="nav_element" onclick="homeLink()">Home</div>
+                    <div class="nav_element" onclick="fixturesLink()">Fixtures/Results</div>
+                    <div class="nav_element" onclick="statsLink()">Season Stats</div>
+                    <!-- <div class="nav_element"><a href="index.html">Home</a></div>
+                    <div class="nav_element"><a href="fixtures.html">Fixtures/Results</a></div>
+                    <div class="nav_element"><a href="seasonstats.html">Season Stats</a></div> -->
+                </div>
+            
+            </div>
+        </header>
 
         <main>
 
@@ -497,6 +513,25 @@
 
         </main>
 
-        <footer id="documentFooter"></footer>
+        <footer id="documentFooter">
+            <div class="footer_container">
+
+                <div class="footer_logo_container">
+                    <img class="footer_logo" src="Images/Logo_PLDA.png">
+                </div>
+            
+                <div class="footer_row_container">
+                    <div class="copyright">©2024 Port Lincoln Darts Association, All rights reserved.</div>
+                </div>
+                
+            
+                <div class="footer_row_container">
+                    <div class="footer_element"><a href="index.html">Social 1</a></div>
+                    <div class="footer_element"><a href="index.html">Social 2</a></div>
+                    <div class="footer_element"><a href="index.html">Social 3</a></div>
+                </div>
+            
+            </div>
+        </footer>
     </body>
 </html>
