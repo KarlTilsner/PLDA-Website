@@ -45,7 +45,7 @@ async function homeLink () {
 
 
 
-
+let fixturesLoaded = false;
 async function fixturesLink () {
     try {
         const getNewContent = await fetch('fixtures.html');
@@ -54,6 +54,12 @@ async function fixturesLink () {
     } catch (error) {
         console.error('Error loading content:', error);
     }
+
+    // make sure only to load the stats once per session
+    if (!fixturesLoaded) {
+        loadFixtures();
+        fixturesLoaded = true;
+    } else displayFixtures();
 }
 
 
