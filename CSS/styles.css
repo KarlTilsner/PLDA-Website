@@ -47,6 +47,7 @@ body {
 
 
 
+
 /* header styles ----------------------------------------------------------------------------------------------------------- */
 header {
     padding: 0.5rem 2rem;
@@ -239,6 +240,10 @@ main {
 }
 
 @media only screen and (max-width: 900px) {
+    main {
+        font-size: 75%;
+    }
+
     .hero_title {
         font-size: 2rem;
     }
@@ -272,7 +277,7 @@ main {
 /* Scorecard styles ----------------------------------------------------------------------------------------------------------- */
 .scorecard {
     margin: 2rem 0;
-    width: 80%;
+    width: 95%;
     display: flex;
     gap: 2rem;
     flex-direction: column;
@@ -354,12 +359,35 @@ main {
 
 .team_name {
     display: flex;
+    flex-direction: row;
     align-items: center;
     justify-content: right;
 }
 
 .winner {
     color: red;
+}
+
+@media only screen and (max-width: 900px) {
+    .round_number_container {
+        padding-bottom: 0.25rem;
+    }
+
+    .match_info_container {
+        padding: 0.25rem;
+    }
+
+    .team_scores_container {
+        padding: 0.25rem;
+    }
+    
+    .top_players_container {
+        padding: 0.25rem;
+    }
+
+    .title {
+        font-size: 1rem;
+    }
 }
 /* Scorecard styles ----------------------------------------------------------------------------------------------------------- */
 

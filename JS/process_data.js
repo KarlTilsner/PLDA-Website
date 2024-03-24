@@ -209,10 +209,44 @@ async function processFixtures () {
 
 
 
+
+        // Define weights for each statistic
+        const weights = {
+            tonsWeight: 10, // Weight for each ton
+            pegsWeight: 15, // Weight for each peg
+            pegsHighWeight: 6 // Weight for each high peg
+        };
+
+
         // Get home MVP
+        // Calculate overall score for each player
+        index.match.home_team.player_stats.map(player => {
+            player.overallScore = (player.tons.length * weights.tonsWeight) +
+                                  (player.pegs * weights.pegsWeight) +
+                                  (player.pegs_high.length * weights.pegsHighWeight);
+        });
+        
+        // Sort players by overall score in descending order
+        index.match.home_team.player_stats.sort((a, b) => b.overallScore - a.overallScore);
+        
+        // MVP is the first player in the sorted array
+        console.log(index.name.substring(0, 10), index.match.home_team.name, index.match.home_team.player_stats[0].name, "-", "Tons:", index.match.home_team.player_stats[0].tons.length, "-", "Pegs:", index.match.home_team.player_stats[0].pegs);
+        temp.home.mvp = `${index.match.home_team.player_stats[0].name}: ${index.match.home_team.player_stats[0].tons.length} Tons, ${index.match.home_team.player_stats[0].pegs} Pegs`;
 
         // Get away MVP
-
+        // Calculate overall score for each player
+        index.match.away_team.player_stats.map(player => {
+            player.overallScore = (player.tons.length * weights.tonsWeight) +
+                                  (player.pegs * weights.pegsWeight) +
+                                  (player.pegs_high.length * weights.pegsHighWeight);
+        });
+        
+        // Sort players by overall score in descending order
+        index.match.away_team.player_stats.sort((a, b) => b.overallScore - a.overallScore);
+        
+        // MVP is the first player in the sorted array
+        console.log(index.name.substring(0, 10), index.match.away_team.name, index.match.away_team.player_stats[0].name, "-", "Tons:", index.match.away_team.player_stats[0].tons.length, "-", "Pegs:", index.match.away_team.player_stats[0].pegs);
+        temp.away.mvp = `${index.match.away_team.player_stats[0].name}: ${index.match.away_team.player_stats[0].tons.length} Tons, ${index.match.away_team.player_stats[0].pegs} Pegs`;
 
 
 

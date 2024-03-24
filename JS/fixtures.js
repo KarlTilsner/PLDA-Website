@@ -106,13 +106,13 @@ function displayFixtures () {
                     </div>
     
                     <div class="top_players_grid winner">
-                        <div class="grid_item">---</div>
+                        <div class="grid_item">${match.home.mvp}</div>
     
                         <div class="grid_item">${homeHighPeg}</div>
                     </div>
     
                     <div class="top_players_grid">
-                        <div class="grid_item">---</div>
+                        <div class="grid_item">${match.away.mvp}</div>
     
                         <div class="grid_item">${awayHighPeg}</div>
                     </div>
