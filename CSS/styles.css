@@ -261,7 +261,31 @@ main {
 
 /* Additional body styles ----------------------------------------------------------------------------------------------------------- */
 .screen_wide_content {
-    padding: 1rem;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin: 1rem;
+}
+
+.about_section {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    width: 100%;
+    margin: 0 1rem;
+}
+
+.about_info_container {
+    background-color: var(--theme-colour-light);
+    padding: 2rem;
+    border-radius: 0.5rem;
+}
+
+.about_info_title {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+
+    margin-right: auto;
 }
 /* Additional body styles ----------------------------------------------------------------------------------------------------------- */
 
