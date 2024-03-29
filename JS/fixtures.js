@@ -61,11 +61,11 @@ function displayFixtures () {
                     <div class="team_score_grid">
                         <div class="grid_item"></div>
     
-                        <div class="grid_item">Singles</div>
+                        <div class="grid_item mobile_hide">Singles</div>
     
-                        <div class="grid_item">Doubles</div>
+                        <div class="grid_item mobile_hide">Doubles</div>
     
-                        <div class="grid_item">Teams</div>
+                        <div class="grid_item mobile_hide">Teams</div>
     
                         <div class="grid_item"></div>
                     </div>
@@ -73,11 +73,11 @@ function displayFixtures () {
                     <div class="team_score_grid winner">
                         <div class="grid_item title team_name">${match.home.team_name}</div>
     
-                        <div class="grid_item">${match.home.singles}</div>
+                        <div class="grid_item mobile_hide">${match.home.singles}</div>
     
-                        <div class="grid_item">${match.home.doubles}</div>
+                        <div class="grid_item mobile_hide">${match.home.doubles}</div>
     
-                        <div class="grid_item">${match.home.triples}</div>
+                        <div class="grid_item mobile_hide">${match.home.triples}</div>
     
                         <div class="grid_item title">${match.home.wins}</div>
                     </div>
@@ -85,11 +85,11 @@ function displayFixtures () {
                     <div class="team_score_grid">
                         <div class="grid_item title team_name">${match.away.team_name}</div>
     
-                        <div class="grid_item">${match.away.singles}</div>
+                        <div class="grid_item mobile_hide">${match.away.singles}</div>
     
-                        <div class="grid_item">${match.away.doubles}</div>
+                        <div class="grid_item mobile_hide">${match.away.doubles}</div>
     
-                        <div class="grid_item">${match.away.triples}</div>
+                        <div class="grid_item mobile_hide">${match.away.triples}</div>
     
                         <div class="grid_item title">${match.away.wins}</div>
                     </div>
