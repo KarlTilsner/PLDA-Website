@@ -34,6 +34,15 @@ function displayFixtures () {
 
     seasonMatches.map(match => {
 
+        // Determine winner
+        let home_winner = "";
+        let away_winner = "";
+        if (match.home.wins > match.away.wins) {
+            home_winner = "winner";
+        } else if (match.away.wins > match.home.wins) {
+            away_winner = "winner";
+        }
+
         // Get home high pegs
         let homeHighPeg = "";
         match.home.high_peg.map(index => {
@@ -70,7 +79,7 @@ function displayFixtures () {
                         <div class="grid_item"></div>
                     </div>
     
-                    <div class="team_score_grid winner">
+                    <div class="team_score_grid ${home_winner}">
                         <div class="grid_item title team_name">${match.home.team_name}</div>
     
                         <div class="grid_item mobile_hide">${match.home.singles}</div>
@@ -82,7 +91,7 @@ function displayFixtures () {
                         <div class="grid_item title">${match.home.wins}</div>
                     </div>
     
-                    <div class="team_score_grid">
+                    <div class="team_score_grid ${away_winner}">
                         <div class="grid_item title team_name">${match.away.team_name}</div>
     
                         <div class="grid_item mobile_hide">${match.away.singles}</div>
@@ -105,13 +114,13 @@ function displayFixtures () {
                         <div class="grid_item">High Peg</div>
                     </div>
     
-                    <div class="top_players_grid winner">
+                    <div class="top_players_grid ${home_winner}">
                         <div class="grid_item">${match.home.mvp}</div>
     
                         <div class="grid_item">${homeHighPeg}</div>
                     </div>
     
-                    <div class="top_players_grid">
+                    <div class="top_players_grid ${away_winner}">
                         <div class="grid_item">${match.away.mvp}</div>
     
                         <div class="grid_item">${awayHighPeg}</div>
