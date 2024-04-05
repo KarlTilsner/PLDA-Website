@@ -5,7 +5,7 @@
     --font-colour-dark: #272826;
     --font-colour-light: #AFBDCA;
 
-    --theme-colour-main: #F3F7FB;
+    --theme-colour-main: #f0f2f7;
     --theme-colour-light: #FFFFFF;
 
     --border-grey: #AFBDCA;
@@ -88,6 +88,8 @@ header {
 
 .nav_element {
     padding: 1rem;
+    display: flex;
+    align-items: center;
     transition: var(--hover-transition);
 }
 
@@ -113,7 +115,7 @@ header {
     }
 
     .nav_element {
-        padding: 1rem 0;
+        padding: 1rem 0.5rem;
         transition: var(--hover-transition);
     }
 
@@ -350,6 +352,10 @@ main {
 }
 
 @media only screen and (max-width: 900px) {
+    .page_title {
+        font-size: 2rem;
+    }
+
     .filter_menu {
         flex-direction: column;
     }
@@ -607,10 +613,17 @@ input[type="date"] {
     min-width: none;
 }
 
+.score_entry_sign_in {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+}
+
 .scoresheet {
-    width: 80%;
     padding: 2rem;
-    margin: 2rem 0;
+    margin: 2rem;
 
     display: flex;
     flex-direction: column;
@@ -754,6 +767,12 @@ input[type="date"] {
 }
 
 @media only screen and (max-width: 900px) {
+    .scoresheet {
+        padding: 1rem;
+        margin: 2rem 0;
+        border-radius: 0;
+    }
+
     #whenSignedIn {
         display: none;
         flex-direction: column;

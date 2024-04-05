@@ -4,7 +4,7 @@ const whenSignedIn = document.getElementById('whenSignedIn');
 const whenSignedOut = document.getElementById('whenSignedOut');
 const signInBtn = document.getElementById('signInBtn');
 const signOutBtn = document.getElementById('signOutBtn');
-const userDetails = document.getElementById('userDetails');
+
 
 const provider = new firebase.auth.GoogleAuthProvider();
 
@@ -16,12 +16,13 @@ auth.onAuthStateChanged(user => {
         // signed in
         whenSignedIn.style.display = "flex";
         whenSignedOut.hidden = true;
-        userDetails.innerHTML = `<h3>Hello ${user.displayName}</h3>`; // <p>Your ID is: ${user.uid}</p>
+        signOutBtn.hidden = false;
+
     } else {
         // not signed in
         whenSignedIn.style.display = "none";
         whenSignedOut.hidden = false;
-        userDetails.innerHTML = '';
+        signOutBtn.hidden = true;
     }
 });
 

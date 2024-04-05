@@ -4,7 +4,7 @@ const whenSignedIn = document.getElementById('whenSignedIn');
 const whenSignedOut = document.getElementById('whenSignedOut');
 
 // const signOutBtn = document.getElementById('signOutBtn');
-const userDetails = document.getElementById('userDetails');
+// const userDetails = document.getElementById('userDetails');
 
 const provider = new firebase.auth.GoogleAuthProvider();
 
@@ -18,12 +18,12 @@ auth.onAuthStateChanged(user => {
         whenSignedIn.style.flexDirection = "row";
         whenSignedIn.style.marginLeft = "auto";
         whenSignedOut.hidden = true;
-        userDetails.innerHTML = `Hello ${user.displayName}`; // <p>Your ID is: ${user.uid}</p>
+        // userDetails.innerHTML = `Hello ${user.displayName}`; // <p>Your ID is: ${user.uid}</p>
     } else {
         // not signed in
         whenSignedIn.style.display = "none";
         whenSignedOut.hidden = false;
-        userDetails.innerHTML = '';
+        // userDetails.innerHTML = '';
     }
 });
 // Use the code above to hide the nav elements and show the login button when user is not signed in

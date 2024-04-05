@@ -39,12 +39,12 @@
                 </div>
             
                 <div class="nav_container">
-                    <div class="nav_element" onclick="homeLink()">Home</div>
-                    <div class="nav_element" onclick="fixturesLink()">Fixtures/Results</div>
-                    <div class="nav_element" onclick="statsLink()">Season Stats</div>
-                    <!-- <div class="nav_element"><a href="index.html">Home</a></div>
-                    <div class="nav_element"><a href="fixtures.html">Fixtures/Results</a></div>
-                    <div class="nav_element"><a href="seasonstats.html">Season Stats</a></div> -->
+                    <div class="nav_element"><a href="index.html">Home</a></div>                    
+
+                    <div class="nav_element">
+                        <button class="sign_out_button" id="signOutBtn">Sign Out</button>
+                    </div>
+                    
                 </div>
             
             </div>
@@ -54,21 +54,30 @@
 
             <div class="scoresheet">
 
-                <h1>Match scoresheet entry</h1>
-
                 <section id="whenSignedOut">
-                    <button class="sign_in_button" id="signInBtn">Sign In With Google</button>
+                    <div class="score_entry_sign_in">
+                        <div class="page_title">Match scoresheet entry</div>
+                        <button class="sign_in_button" id="signInBtn">Sign In With Google</button>
+                    </div>
                 </section>
 
                 <form id="scoresheet_form">
                     <section id="whenSignedIn">
-                        <div>
-                            <div id="userDetails"></div>
-                            <button class="sign_out_button" id="signOutBtn">Sign Out</button>
+                        <div class="page_title_and_dropdowns">
+                            <div class="page_title">Match scoresheet entry</div>
+                        
+                            <div class="filter_menu">
+                                <select class="filter_select" id="season_select" onchange="changeSeason(this)">
+                                    <option class="dropdown_menu_option" value="SeasonName">Select Season</option>
+                                </select>
+                        
+                                <select class="filter_select" id="season_select" onchange="changeDiv(this)">
+                                    <option class="dropdown_menu_option" value="SeasonName">Select Division</option>
+                                </select>
+                            </div>
+                        
                         </div>
-                        
-                        
-        
+                               
                         <div class="match_date_input_container">
                             <div class="title">Match date</div>
                             <input type="date" class="match_date_input" id="match_creation_date" required>
