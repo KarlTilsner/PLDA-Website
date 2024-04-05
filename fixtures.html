@@ -1,3 +1,16 @@
-<div class="scorecard" id="fixturesDiv">
+<div class="page_title_and_dropdowns">
+    <div class="page_title">Fixtures and Results</div>
+
+    <div class="filter_menu">
+        <select class="filter_select" id="season_select" onchange="changeSeason(this)">
+            <option class="dropdown_menu_option" value="SeasonName">Select Season</option>
+        </select>
+
+        <select class="filter_select" id="season_select" onchange="changeDiv(this)">
+            <option class="dropdown_menu_option" value="SeasonName">Select Division</option>
+        </select>
+    </div>
 
 </div>
+
+<div class="scorecard" id="fixturesDiv"></div>
